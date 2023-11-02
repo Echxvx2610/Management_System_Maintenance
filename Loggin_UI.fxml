@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -18,26 +17,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #0cc4c7; -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #000000; -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIcon glyphName="COGS" layoutX="23.0" layoutY="358.0" rotate="-138.4" size="25em" wrappingWidth="303.08319091796875">
-               <fill>
-                  <RadialGradient centerY="0.42417061611374407" radius="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.34601202607154846" green="0.21905457973480225" blue="0.7631579041481018" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </fill>
-            </FontAwesomeIcon>
+            <FontAwesomeIcon fill="WHITE" glyphName="COGS" layoutX="23.0" layoutY="358.0" rotate="-138.4" size="25em" wrappingWidth="303.08319091796875" />
          </children>
       </AnchorPane>
    </left>
