@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #0cc4c7; -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER">
+         <children>
+            <FontAwesomeIcon glyphName="COGS" layoutX="23.0" layoutY="358.0" rotate="-138.4" size="25em" wrappingWidth="303.08319091796875">
+               <fill>
+                  <RadialGradient centerY="0.42417061611374407" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.34601202607154846" green="0.21905457973480225" blue="0.7631579041481018" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </FontAwesomeIcon>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="428.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="101.0" layoutY="189.0" promptText="User_name" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
+            <PasswordField layoutX="101.0" layoutY="236.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
+            <FontAwesomeIcon caretBias="false" fill="#8600fc" glyphName="USER" layoutX="71.0" layoutY="212.0" size="2em" />
+            <FontAwesomeIcon fill="#8400ff" glyphName="KEY" layoutX="68.0" layoutY="260.0" size="2em" text="" />
+            <Button layoutX="117.0" layoutY="290.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: #4ac7e0;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Math" size="12.0" />
+               </font>
+            </Button>
+            <Hyperlink layoutX="110.0" layoutY="463.0" text="Forgot Your Password?" />
+            <FontAwesomeIcon glyphName="USERS" layoutX="143.0" layoutY="119.0" size="5em">
+               <fill>
+                  <LinearGradient endY="0.6872037914691943" startY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.34601202607154846" green="0.21905457973480225" blue="0.7631579041481018" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2997075915336609" green="0.7160087823867798" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </FontAwesomeIcon>
+            <Text layoutX="127.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvido!" textAlignment="CENTER" wrappingWidth="96.013671875" />
+            <TextArea layoutX="72.0" layoutY="393.0" prefHeight="70.0" prefWidth="207.0" text="Referencias para esta UI:&#10;https://www.youtube.com/watch?v=_WEoMobafoM" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
