@@ -1,1 +1,2 @@
 https://javiergarciaescobedo.es/programacion-en-java/96-javafx/399-primeros-pasos-con-javafx-scene-builder-y-netbeans
+https://github.com/sajdoko/StoreManagementSystem
