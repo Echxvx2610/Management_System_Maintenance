@@ -3,3 +3,4 @@
 - https://www.youtube.com/watch?v=97U8PGyZm4A
 - https://www.youtube.com/watch?v=cZt3zGmC8Vo - JavaFX Tutorial - Login, Registration and Forget Password Form
 - https://jenkov.com/tutorials/javafx/overview.html
+- https://javiergarciaescobedo.es/programacion-en-java/96-javafx/485-iniciacion-al-diseno-de-interfaces-graficos-con-scene-builder-netbeans-y-javafx
