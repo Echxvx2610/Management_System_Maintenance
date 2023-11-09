@@ -16,20 +16,53 @@
 
 <BorderPane maxHeight="500.0" maxWidth="700.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentLoginController">
    <left>
-      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #4ac7e0; -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER">
-         <children>
-            <FontAwesomeIcon fill="WHITE" glyphName="COGS" layoutX="23.0" layoutY="358.0" rotate="-138.4" size="25em" wrappingWidth="303.08319091796875" />
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9); -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="428.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="userField" layoutX="101.0" layoutY="189.0" promptText="User_name" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
             <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="236.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
-            <FontAwesomeIcon caretBias="false" fill="#8600fc" glyphName="USER" layoutX="71.0" layoutY="212.0" size="2em" />
-            <FontAwesomeIcon fill="#8400ff" glyphName="KEY" layoutX="68.0" layoutY="260.0" size="2em" text="" />
-            <Button fx:id="loginButton" layoutX="117.0" layoutY="310.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: #4ac7e0;" text="Login" textFill="WHITE">
+            <FontAwesomeIcon caretBias="false" glyphName="USER" layoutX="71.0" layoutY="212.0" size="2em">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9932885906040269">
+                           <color>
+                              <Color red="0.2930068373680115" green="0.7896665930747986" blue="0.8552631735801697" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2930068373680115" green="0.7896665930747986" blue="0.8552631735801697" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></FontAwesomeIcon>
+            <FontAwesomeIcon glyphName="KEY" layoutX="68.0" layoutY="260.0" size="2em" text="">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.34283626079559326" green="0.8007675409317017" blue="0.8815789222717285" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></FontAwesomeIcon>
+            <Button fx:id="loginButton" layoutX="117.0" layoutY="310.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Login" textFill="WHITE">
                <font>
                   <Font name="Cambria Math" size="12.0" />
                </font>
@@ -37,16 +70,16 @@
             <Hyperlink fx:id="hiperHelp" layoutX="110.0" layoutY="463.0" text="Forgot Your Password?" />
             <FontAwesomeIcon glyphName="USERS" layoutX="143.0" layoutY="119.0" size="5em">
                <fill>
-                  <LinearGradient endY="0.6872037914691943" startY="1.0">
+                  <LinearGradient endX="1.0" endY="1.0">
                      <stops>
                         <Stop>
                            <color>
-                              <Color red="0.34601202607154846" green="0.21905457973480225" blue="0.7631579041481018" />
+                              <Color />
                            </color>
                         </Stop>
                         <Stop offset="1.0">
                            <color>
-                              <Color red="0.2997075915336609" green="0.7160087823867798" blue="0.7894737124443054" />
+                              <Color red="0.3305920958518982" green="0.7989309430122375" blue="0.8815789222717285" />
                            </color>
                         </Stop>
                      </stops>

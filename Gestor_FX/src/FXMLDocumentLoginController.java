@@ -1,4 +1,9 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
@@ -37,26 +42,40 @@ public class FXMLDocumentLoginController implements Initializable {
     void pressLogin(ActionEvent event) {
         String username = userField.getText();
         String password = passwordField.getText();
-        if (username.equals("admin") && password.equals("admin")) {
-            JOptionPane.showMessageDialog(null, "Login successful!");
-            try {
 
-                // Cargar el nuevo archivo FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
-                Parent root = loader.load();
+        try (Connection conn = DatabaseConnector.getConnection();
+                PreparedStatement stmt = conn
+                        .prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?")) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
 
-                // Obtener el controlador asociado al nuevo archivo FXML (si es necesario)
-                // FXMLDocumentMainController controller = loader.getController();
+            if (rs.next()) {
+                // Usuario y contraseña válidos
+                // Continúa a la ventana principal
+                JOptionPane.showMessageDialog(null, "Login successful");
+                try {
 
-                // Obtener la ventana actual y reemplazar su contenido con el nuevo FXML
-                Scene scene = loginButton.getScene();
-                scene.setRoot(root);
-            } catch (IOException e) {
-                // Manejar errores en la carga del nuevo FXML
-                e.printStackTrace();
+                    // Cargar el nuevo archivo FXML
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
+                    Parent root = loader.load();
+
+                    // Obtener la ventana actual y reemplazar su contenido con el nuevo FXML
+                    Scene scene = loginButton.getScene();
+                    scene.setRoot(root);
+                } catch (IOException e) {
+                    // Manejar errores en la carga del nuevo FXML
+                    e.printStackTrace();
+                } finally {
+                    // cierra la conexión
+                    conn.close();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Login failed");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Login failed!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejar errores de la base de datos
         }
     }
 
@@ -69,6 +88,11 @@ public class FXMLDocumentLoginController implements Initializable {
             passwordField.setText(passwordField.getPromptText());
             passwordField.setPromptText("");
         }
+    }
+
+    @FXML
+    void pressHelp(ActionEvent event) {
+        // TODO
     }
 
     @Override
