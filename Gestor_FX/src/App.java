@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,20 +11,23 @@ public class App extends Application {
         launch(args);
     }
 
+    @FXML
+    private Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) {
-        Parent root;
+        this.primaryStage = primaryStage;
         try {
-            root = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentLogin.fxml"));
+            Parent root = loader.load();
+            FXMLDocumentLoginController loginController = loader.getController();
+            loginController.setPrimaryStage(primaryStage);
+
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            // primaryStage.setResizable(false);
-            // primaryStage.initStyle(StageStyle.UNDECORATED);
-            primaryStage.setHeight(450);
-            primaryStage.setWidth(900);
-            primaryStage.setResizable(false); // Opcional
             primaryStage.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

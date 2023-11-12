@@ -26,6 +26,12 @@ public class FXMLDocumentMainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (primaryStage != null) {
+            primaryStage.setHeight(450);
+            primaryStage.setWidth(900);
+            primaryStage.setResizable(false); // Opcional
+        }
+
         pane1.setVisible(false);
 
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), pane1);
@@ -65,5 +71,9 @@ public class FXMLDocumentMainController implements Initializable {
             translateTransition2.play();
         });
 
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

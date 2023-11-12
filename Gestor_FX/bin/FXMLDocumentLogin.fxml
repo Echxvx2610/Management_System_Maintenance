@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,23 +21,23 @@
 
 <BorderPane maxHeight="500.0" maxWidth="700.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentLoginController">
    <left>
-      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: black; -fx-border-radius: 50 50 50 50;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="279.0" fitWidth="351.0" focusTraversable="true" layoutY="24.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+            <ImageView fitHeight="267.0" fitWidth="340.0" focusTraversable="true" layoutX="5.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                <image>
                   <Image url="@../img/logo_oficial.jpeg" />
                </image>
                <effect>
-                  <Reflection fraction="0.51" topOpacity="0.29" />
+                  <Reflection fraction="0.31" topOpacity="0.29" />
                </effect>
             </ImageView>
          </children></AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="428.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="428.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="userField" layoutX="101.0" layoutY="189.0" promptText="User_name" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
-            <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="236.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
+            <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="236.0" onKeyPressed="#keyEnterPress" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0px 0px 3px 0px;" />
             <FontAwesomeIcon caretBias="false" glyphName="USER" layoutX="71.0" layoutY="212.0" size="2em">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -57,8 +59,9 @@
                         </Stop>
                      </stops>
                   </LinearGradient>
-               </fill></FontAwesomeIcon>
-            <FontAwesomeIcon glyphName="KEY" layoutX="68.0" layoutY="260.0" size="2em" text="">
+               </fill>
+            </FontAwesomeIcon>
+            <FontAwesomeIcon glyphName="KEY" layoutX="68.0" layoutY="260.0" size="2em">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -74,11 +77,18 @@
                         </Stop>
                      </stops>
                   </LinearGradient>
-               </fill></FontAwesomeIcon>
-            <Button fx:id="loginButton" layoutX="117.0" layoutY="310.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Login" textFill="WHITE">
+               </fill>
+            </FontAwesomeIcon>
+            <Button fx:id="loginButton" layoutX="117.0" layoutY="310.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Login" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
                <font>
                   <Font name="Cambria Math" size="12.0" />
                </font>
+               <effect>
+                  <DropShadow spread="0.15" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Hyperlink fx:id="hiperHelp" layoutX="110.0" layoutY="463.0" text="Forgot Your Password?" />
             <FontAwesomeIcon glyphName="USERS" layoutX="143.0" layoutY="119.0" size="5em">
@@ -102,8 +112,9 @@
             <Text layoutX="116.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" textAlignment="CENTER" wrappingWidth="119.013671875">
                <font>
                   <Font name="Cambria" size="21.0" />
-               </font></Text>
-            <CheckBox fx:id="checkPassword" layoutX="101.0" layoutY="274.0" mnemonicParsing="false" onAction="#checkBoxPass" text="Show password" />
+               </font>
+            </Text>
+            <CheckBox fx:id="checkPassword" layoutX="117.0" layoutY="276.0" mnemonicParsing="false" onAction="#checkBoxPass" text="Show password" />
          </children>
       </AnchorPane>
    </right>
