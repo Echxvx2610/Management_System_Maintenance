@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+//import javafx.stage.StageStyle;
 
 public class App extends Application {
     public static void main(String[] args) throws Exception {
@@ -16,7 +17,11 @@ public class App extends Application {
             root = FXMLLoader.load(getClass().getResource("FXMLDocumentLogin.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
+            // primaryStage.setResizable(false);
+            // primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.setHeight(450);
+            primaryStage.setWidth(900);
+            primaryStage.setResizable(false); // Opcional
             primaryStage.show();
         } catch (Exception e) {
         }
