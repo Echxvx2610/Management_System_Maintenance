@@ -43,34 +43,53 @@ public class FXMLDocumentLoginController implements Initializable {
 
     @FXML
     void pressLogin(ActionEvent event) {
-        // permitir el acceso si usuario y password son iguales a admin
         String username = userField.getText();
         String password = passwordField.getText();
-        if (username.equals("admin") && password.equals("admin")) {
-            JOptionPane.showMessageDialog(null, "Login successful");
-            try {
-                // Cargar el nuevo archivo FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
-                Parent root = loader.load();
 
-                Stage primaryStage = (Stage) loginButton.getScene().getWindow(); // obtener la ventana actual
+        try (Connection conn = DatabaseConnector.getConnection();
+                PreparedStatement stmt = conn
+                        .prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?")) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
 
-                // configurar el tamaño de la ventana principal
-                if (primaryStage != null) {
-                    primaryStage.setWidth(800); // Establecer el ancho deseado
-                    primaryStage.setHeight(450); // Establecer la altura deseada
-                    primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+            if (rs.next()) {
+                // Usuario y contraseña válidos
+                // Continúa a la ventana principal
+                JOptionPane.showMessageDialog(null, "Login successful");
+                try {
+                    // Cargar el nuevo archivo FXML
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
+                    Parent root = loader.load();
+
+                    // Obtener el Stage principal desde la aplicación
+                    Stage primaryStage = (Stage) loginButton.getScene().getWindow(); // obtener la ventana actual
+
+                    // Configurar el tamaño de la ventana principal
+                    if (primaryStage != null) {
+                        primaryStage.setWidth(800); // Establecer el ancho deseado
+                        primaryStage.setHeight(450); // Establecer la altura deseada
+                        primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+                    }
+
+                    // Reemplazar el contenido de la ventana actual con el nuevo FXML
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                } catch (IOException e) {
+                    // Manejar errores en la carga del nuevo FXML
+                    e.printStackTrace();
+                } finally {
+                    // Cerrar la base de datos
+                    conn.close();
                 }
-
-                // Reemplazar el contenido de la ventana actual con el nuevo FXML
-                Scene scene = new Scene(root);
-                primaryStage.setScene(scene);
-            } catch (IOException e) {
-                // Manejar errores en la carga del nuevo FXML
-                e.printStackTrace();
+            } else {
+                JOptionPane.showMessageDialog(null, "Login failed");
+                userField.setText("");
+                passwordField.setText("");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Login failed");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejar errores de la base de datos
         }
     }
 

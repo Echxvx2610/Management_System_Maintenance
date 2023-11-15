@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "PruebasClases",
+            "request": "launch",
+            "mainClass": "PruebasClases",
+            "projectName": "Gestor_FX_d57df640"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",

@@ -1,34 +1,28 @@
+import java.util.ArrayList;
+
 public class Equipo {
     // atributos
-    private String id;
+    // private String id;
     private String nombre;
     private String modelo;
     private String marca;
     private String serie;
-    private String estado;
+    private Boolean activo; // activo = true, inactivo = false
+    private String lugar; // localización
     private String descripcion;
 
-    // constructor
-    public Equipo(String id, String nombre, String modelo, String marca, String serie, String estado,
-            String descripcion) {
-        this.id = id;
+    // constructor con todosl os atributos
+    Equipo(String nombre, String modelo, String marca, String serie, Boolean activo, String lugar, String descripcion) {
         this.nombre = nombre;
         this.modelo = modelo;
         this.marca = marca;
         this.serie = serie;
-        this.estado = estado;
+        this.activo = activo;
+        this.lugar = lugar;
         this.descripcion = descripcion;
     }
-    // getters y setters
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    // método getter y setter para 'nombre'
     public String getNombre() {
         return nombre;
     }
@@ -37,6 +31,7 @@ public class Equipo {
         this.nombre = nombre;
     }
 
+    // método getter y setter para 'modelo'
     public String getModelo() {
         return modelo;
     }
@@ -45,6 +40,7 @@ public class Equipo {
         this.modelo = modelo;
     }
 
+    // método getter y setter para 'marca'
     public String getMarca() {
         return marca;
     }
@@ -53,6 +49,7 @@ public class Equipo {
         this.marca = marca;
     }
 
+    // método getter y setter para 'serie'
     public String getSerie() {
         return serie;
     }
@@ -61,14 +58,25 @@ public class Equipo {
         this.serie = serie;
     }
 
-    public String getEstado() {
-        return estado;
+    // método getter y setter para 'estado'
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
+    // método getter y setter para 'lugar'
+    public String getLugar() {
+        return this.lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    // método getter y setter para 'descripcion'
     public String getDescripcion() {
         return descripcion;
     }
@@ -77,11 +85,17 @@ public class Equipo {
         this.descripcion = descripcion;
     }
 
-    // toString
-    @Override
-    public String toString() {
-        return "Informacion del equipo: \n" + "ID: " + id + "\n" + "Nombre: " + nombre + "\n" + "Modelo: "
-                + modelo + "\n" + "Marca: " + marca + "\n" + "Serie: " + serie + "\n" + "Estado: " + estado
-                + "\n" + "Descripción: " + descripcion;
+    // método para crear un arrayList con los datos del equipo creado
+    // reemplazando el toString
+    public ArrayList<String> toArrayList() {
+        ArrayList<String> datosEquipo = new ArrayList<>();
+        datosEquipo.add(nombre);
+        datosEquipo.add(modelo);
+        datosEquipo.add(marca);
+        datosEquipo.add(serie);
+        datosEquipo.add(activo.toString()); // convertir bool a string
+        datosEquipo.add(lugar);
+        datosEquipo.add(descripcion);
+        return datosEquipo;
     }
 }
