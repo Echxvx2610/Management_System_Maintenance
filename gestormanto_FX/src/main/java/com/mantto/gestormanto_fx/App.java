@@ -19,8 +19,9 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         // cargar el archivo FXML login
+        this.primaryStage = primaryStage;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentRegistro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentLogin.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

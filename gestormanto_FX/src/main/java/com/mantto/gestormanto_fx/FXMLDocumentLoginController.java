@@ -105,15 +105,27 @@ public class FXMLDocumentLoginController implements Initializable {
 
     @FXML
     void pressSingin(ActionEvent event) {
+        // Cambiamos de vista a Registro.fxml
         try {
-            // Tu código actual...
-
             // Cargar el nuevo archivo FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentSingin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentRegistro.fxml"));
             Parent root = loader.load();
 
-            // Otro código...
-        } catch (Exception e) {
+            // Obtener el Stage principal desde la aplicación
+            Stage primaryStage = (Stage) loginButton.getScene().getWindow(); // obtener la ventana actual
+
+            // Configurar el tamaño de la ventana principal
+            if (primaryStage != null) {
+                primaryStage.setWidth(700); // Establecer el ancho deseado
+                primaryStage.setHeight(500); // Establecer la altura deseada
+                primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+            }
+
+            // Reemplazar el contenido de la ventana actual con el nuevo FXML
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (IOException e) {
+            // Manejar errores en la carga del nuevo FXML
             e.printStackTrace();
         }
     }
@@ -138,8 +150,8 @@ public class FXMLDocumentLoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (primaryStage != null) {
-            primaryStage.setWidth(600); // Establecer el ancho deseado
-            primaryStage.setHeight(400); // Establecer la altura deseada
+            primaryStage.setWidth(700); // Establecer el ancho deseado
+            primaryStage.setHeight(500); // Establecer la altura deseada
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
         }
     }
