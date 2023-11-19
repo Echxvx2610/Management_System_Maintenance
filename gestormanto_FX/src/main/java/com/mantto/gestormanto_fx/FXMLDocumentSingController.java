@@ -1,46 +1,45 @@
+package com.mantto.gestormanto_fx;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
-public class FXMLDocumentSinginController implements Initializable {
+public class FXMLDocumentSingController implements Initializable {
+    @FXML
+    private Stage primaryStage;
 
     @FXML
-    private TextField apellidoField;
+    private Button loginButton;
 
     @FXML
-    private PasswordField contrasenaField1;
+    private Button loginButton1;
 
     @FXML
-    private PasswordField contrasenaField2;
+    private TextField userField;
 
     @FXML
-    private TextField correoField;
+    private TextField userField1;
 
     @FXML
-    private Button limpiarButton;
+    private TextField userField11;
 
     @FXML
-    private TextField nombreField;
+    private TextField userField111;
 
     @FXML
-    private Button registrarButoon;
+    private TextField userField2;
 
     @FXML
-    private TextField usuarioField;
+    private TextField userField21;
 
     @FXML
-    void pressLimpiar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void pressRegistrar(ActionEvent event) {
+    void pressLogin(ActionEvent event) {
 
     }
 
@@ -52,6 +51,10 @@ public class FXMLDocumentSinginController implements Initializable {
         // primaryStage.setResizable(false); // Opcional: Para hacerla no
         // redimensionable
         // }
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
 }

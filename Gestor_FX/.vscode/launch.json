@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "PruebasClases",
+            "name": "App",
             "request": "launch",
-            "mainClass": "PruebasClases",
+            "mainClass": "App",
             "projectName": "Gestor_FX_d57df640"
         },
         {
@@ -48,7 +48,14 @@
             "type": "java",
             "name": "App",
             "request": "launch",
-            "mainClass": "App",
+            "mainClass": "main.App",
+            "projectName": "Gestor_FX_d57df640"
+        },
+        {
+            "type": "java",
+            "name": "PruebasClases",
+            "request": "launch",
+            "mainClass": "main.PruebasClases",
             "projectName": "Gestor_FX_d57df640",
             "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }

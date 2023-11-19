@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentMainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mantto.gestormanto_fx.FXMLDocumentMainController">
    <children>
       <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <ImageView id="menu" fx:id="menu" fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/menu_bar.png" />
+                  <Image url="@../../../img/menu_bar.png" />
                </image>
             </ImageView>
          </children>
@@ -26,7 +26,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/main.png" />
+                        <Image url="@../../../img/main.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -34,7 +34,7 @@
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/usuarios.png" />
+                        <Image url="@../../../img/usuarios.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -42,7 +42,7 @@
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/inventario.png" />
+                        <Image url="@../../../img/inventario.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -50,7 +50,7 @@
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/ot.png" />
+                        <Image url="@../../../img/ot.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -58,7 +58,7 @@
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/inventario.png" />
+                        <Image url="@../../../img/inventario.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -66,7 +66,7 @@
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/chart.png" />
+                        <Image url="@../../../img/chart.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="15.0" />

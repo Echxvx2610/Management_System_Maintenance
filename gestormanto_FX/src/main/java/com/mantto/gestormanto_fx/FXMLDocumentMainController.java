@@ -1,3 +1,5 @@
+package com.mantto.gestormanto_fx;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 

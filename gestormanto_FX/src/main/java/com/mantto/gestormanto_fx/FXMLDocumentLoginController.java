@@ -1,3 +1,5 @@
+package com.mantto.gestormanto_fx;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -5,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,16 +19,18 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class FXMLDocumentLoginController implements Initializable {
     @FXML
     private Stage primaryStage;
 
     @FXML
-    private Hyperlink hiperHelp;
+    private Hyperlink hyperHelp;
+
+    @FXML
+    private Button singButton;
 
     @FXML
     private Button loginButton;
@@ -46,9 +49,10 @@ public class FXMLDocumentLoginController implements Initializable {
         String username = userField.getText();
         String password = passwordField.getText();
 
-        try (Connection conn = DatabaseConnector.getConnection();
-                PreparedStatement stmt = conn
-                        .prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?")) {
+        Connection conn = null;
+        try {
+            conn = DatabaseConnector.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña =?");
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
@@ -78,9 +82,6 @@ public class FXMLDocumentLoginController implements Initializable {
                 } catch (IOException e) {
                     // Manejar errores en la carga del nuevo FXML
                     e.printStackTrace();
-                } finally {
-                    // Cerrar la base de datos
-                    conn.close();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Login failed");
@@ -90,8 +91,33 @@ public class FXMLDocumentLoginController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
             // Manejar errores de la base de datos
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Manejar errores al cerrar la conexión
+            }
         }
     }
+
+    @FXML
+    void pressSingin(ActionEvent event) {
+        try {
+            // Tu código actual...
+
+            // Cargar el nuevo archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentSingin.fxml"));
+            Parent root = loader.load();
+
+            // Otro código...
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void checkBoxPass(ActionEvent event) {
@@ -109,14 +135,6 @@ public class FXMLDocumentLoginController implements Initializable {
         // To do
     }
 
-    @FXML
-    void keyEnterPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            // Cuando se presiona "Enter" en passwordField, ejecutar pressLogin
-            pressLogin(new ActionEvent(passwordField, null));
-        }
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (primaryStage != null) {
@@ -124,9 +142,5 @@ public class FXMLDocumentLoginController implements Initializable {
             primaryStage.setHeight(400); // Establecer la altura deseada
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
         }
-    }
-
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
     }
 }

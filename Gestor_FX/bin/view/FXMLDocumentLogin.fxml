@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="500.0" maxWidth="700.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentLoginController">
+<BorderPane maxHeight="500.0" maxWidth="700.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="D:\programmer\Java\Sistemas_comp\Management_System_Maintenance\Gestor_FX\src\controller\FXMLDocumentLoginController.java">
    <left>
       <AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
@@ -79,7 +79,7 @@
                   </LinearGradient>
                </fill>
             </FontAwesomeIcon>
-            <Button fx:id="loginButton" layoutX="117.0" layoutY="310.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Login" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+            <Button fx:id="loginButton" layoutX="53.0" layoutY="317.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Login" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
                <font>
                   <Font name="Cambria Math" size="12.0" />
                </font>
@@ -90,7 +90,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Hyperlink fx:id="hiperHelp" layoutX="110.0" layoutY="463.0" text="Forgot Your Password?" />
+            <Hyperlink fx:id="hyperHelp" layoutX="111.0" layoutY="463.0" onAction="#pressHelp" text="Forgot Your Password?" />
             <FontAwesomeIcon glyphName="USERS" layoutX="143.0" layoutY="119.0" size="5em">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -115,6 +115,17 @@
                </font>
             </Text>
             <CheckBox fx:id="checkPassword" layoutX="117.0" layoutY="276.0" mnemonicParsing="false" onAction="#checkBoxPass" text="Show password" />
+            <Button fx:id="singButton" layoutX="192.0" layoutY="317.0" mnemonicParsing="false" onAction="#pressSingin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Sing in" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+               <font>
+                  <Font name="Cambria Math" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow spread="0.15" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </right>
