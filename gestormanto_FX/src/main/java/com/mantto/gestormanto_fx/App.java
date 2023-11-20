@@ -21,7 +21,7 @@ public class App extends Application {
         // cargar el archivo FXML login
         this.primaryStage = primaryStage;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentLogin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

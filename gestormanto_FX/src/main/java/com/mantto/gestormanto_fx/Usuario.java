@@ -9,14 +9,16 @@ public class Usuario {
     String email;
     String username;
     String password;
+    String confirmPassword;
 
     //contructor
-    public Usuario(String name, String lastname, String email, String username, String password){
+    public Usuario(String name, String lastname, String email, String username, String password, String confirmPassword) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.confirmPassword = confirmPassword;
     }
     //getters y setters
     public String getName() {
@@ -59,6 +61,12 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
     //retorno de los atributos en un arraylist
     public ArrayList<String> getAttributes() {
         ArrayList<String> attributes = new ArrayList<String>();

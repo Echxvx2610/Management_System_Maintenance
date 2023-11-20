@@ -20,7 +20,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pane1" opacity="0.21" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: black;" />
-      <AnchorPane layoutX="10.0" layoutY="50.0" prefHeight="360.0" prefWidth="40.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane layoutX="10.0" layoutY="50.0" prefHeight="360.0" prefWidth="40.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" layoutY="-10.0" prefHeight="340.0" prefWidth="40.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-5.0">
                <children>
@@ -76,7 +76,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane2" layoutX="52.0" layoutY="50.0" prefHeight="360.0" prefWidth="134.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="45.0">
+      <AnchorPane fx:id="pane2" layoutX="52.0" layoutY="50.0" prefHeight="360.0" prefWidth="134.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="45.0">
          <children>
             <VBox layoutX="17.0" layoutY="14.0" prefHeight="303.0" prefWidth="134.0" spacing="12.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>

@@ -30,7 +30,7 @@ public class FXMLDocumentLoginController implements Initializable {
     private Hyperlink hyperHelp;
 
     @FXML
-    private Button singButton;
+    private Button signButton;
 
     @FXML
     private Button loginButton;
@@ -86,7 +86,9 @@ public class FXMLDocumentLoginController implements Initializable {
             } else {
                 JOptionPane.showMessageDialog(null, "Login failed");
                 userField.setText("");
-                passwordField.setText("");
+                // limpiar passwordfiel y dejar placeholder
+                passwordField.clear();
+                passwordField.setPromptText("Password");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,7 +106,7 @@ public class FXMLDocumentLoginController implements Initializable {
     }
 
     @FXML
-    void pressSingin(ActionEvent event) {
+    void pressSignin(ActionEvent event) {
         // Cambiamos de vista a Registro.fxml
         try {
             // Cargar el nuevo archivo FXML

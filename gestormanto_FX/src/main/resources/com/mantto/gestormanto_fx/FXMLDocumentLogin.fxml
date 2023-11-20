@@ -115,7 +115,7 @@
                </font>
             </Text>
             <CheckBox fx:id="checkPassword" layoutX="117.0" layoutY="276.0" mnemonicParsing="false" onAction="#checkBoxPass" text="Show password" />
-            <Button fx:id="singButton" layoutX="192.0" layoutY="317.0" mnemonicParsing="false" onAction="#pressSingin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Sing in" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+            <Button fx:id="signButton" layoutX="192.0" layoutY="317.0" mnemonicParsing="false" onAction="#pressSignin" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" text="Sign in" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
                <font>
                   <Font name="Cambria Math" size="12.0" />
                </font>

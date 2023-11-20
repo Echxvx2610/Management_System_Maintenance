@@ -60,65 +60,87 @@ public class FXMLDocumentRegistroController implements Initializable {
         nameField.clear();
         userField.clear();
         password1.clear();
+        password1.setPromptText("Password");
         password2.clear();
+        password2.setPromptText("Confirm Password");
     }
 
     @FXML
-    void pressSing(ActionEvent event) {
-        // tomamos los valores de los textfields y password field y los guardamos en la clase usuario
-        String email = emailField.getText();
-        String lastname = lastnameField.getText();
-        String name = nameField.getText();
-        String username = userField.getText();
-        String password = password1.getText();
-        String confirmPassword = password2.getText();
-        //validamos que el password1 y password2 sean iguales para poder continuar con registro
+    void pressSign(ActionEvent event) {
+        // Tomamos los valores de los textfields y password field y los guardamos en la clase usuario
+        Usuario user = new Usuario(
+                nameField.getText(),
+                lastnameField.getText(),
+                emailField.getText(),
+                userField.getText(),
+                password1.getText(),
+                password2.getText()
+        );
+        // Validar que no haya campos vacíos
+        if (user.email.isEmpty() || user.lastname.isEmpty() || user.name.isEmpty() || user.username.isEmpty() || user.password.isEmpty() || user.confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos!");
+            return;
+        }
+
+        // Validar que el usuario no exista en la bd
         try {
-            // validar que el usuario no exista en la bd
-            if (userExists(username)) {
+            if (userExists(user.username)) {
                 JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 return; // Salir de la función sin continuar con el registro
             }
-            if(lastnameExists(lastname)){
+
+            // Validar que el apellido no exista en la bd
+            if (lastnameExists(user.lastname)){
                 JOptionPane.showMessageDialog(null, "El apellido ya existe");
                 return; // Salir de la función sin continuar con el registro
             }
-            // validar que el correo no exista en la bd
-            if (emailExists(email)) {
+
+            // Validar que el correo no exista en la bd
+            if (emailExists(user.email)) {
                 JOptionPane.showMessageDialog(null, "El correo ya está registrado");
                 return; // Salir de la función sin continuar con el registro
             }
-            // validar que los dos password sean iguales
+
+            // Validar que los dos password sean iguales
             if (!password1.getText().equals(password2.getText())) {
                 // Mostrar mensaje de error
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden!");
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
                 return; // Salir de la función sin continuar con el registro
             }
-            System.out.println("Email: " + email + "\nLastname: " + lastname + "\nName: " + name + "\nUsername: " + username + "\nPassword: " + password + "\nConfirm Password: " + confirmPassword);
-            // Tomamos los valores y los guardamos en la base de datos, tabla usuarios
+
+            // Resto del código para insertar el nuevo usuario en la base de datos
             Connection conn = null;
             try {
                 conn = DatabaseConnector.getConnection();
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios (nombre, apellido, correo,usuario,contraseña) VALUES (?, ?, ?, ?,?)");
-                stmt.setString(1, name);
-                stmt.setString(2, lastname);
-                stmt.setString(3, email);
-                stmt.setString(4, username);
-                stmt.setString(5, password);
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios (nombre, apellido, correo, usuario, contraseña) VALUES (?, ?, ?, ?, ?)");
+                stmt.setString(1, user.name);
+                stmt.setString(2, user.lastname);
+                stmt.setString(3, user.email);
+                stmt.setString(4, user.username);
+                stmt.setString(5, user.password);
                 stmt.executeUpdate();
-                //conn.commit()
-                JOptionPane.showMessageDialog(null, "Usuario registrado!");
+                JOptionPane.showMessageDialog(null, "Usuario registrado");
             } catch (SQLException e) {
                 e.printStackTrace();
                 // Manejar errores de la base de datos
             } finally {
-                //cierra conexión con base de datos
-                conn.close();
+                // Cerrar conexión con la base de datos
+                //imprimir los datos registrados
+                System.out.println("Los datos registrados son:");
+                System.out.println("Nombre: " + user.name + "\nApellido: " + user.lastname + "\nCorreo: " + user.email + "\nUsuario: " + user.username + "\nPassword: " + user.password);
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // Método para verificar si el usuario ya existe en la base de datos
     private boolean userExists(String username) throws SQLException {
