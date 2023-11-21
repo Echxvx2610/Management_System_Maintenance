@@ -1,14 +1,18 @@
 package com.mantto.gestormanto_fx;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import javafx.util.Duration;
@@ -17,6 +21,8 @@ public class FXMLDocumentMainController implements Initializable {
     @FXML
     private Stage primaryStage;
 
+    @FXML
+    private Pane paneLoader;
     @FXML
     private ImageView menu;
 
@@ -29,7 +35,7 @@ public class FXMLDocumentMainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (primaryStage != null) {
-            primaryStage.setHeight(450);
+            primaryStage.setHeight(600);
             primaryStage.setWidth(900);
             primaryStage.setResizable(false); // Opcional
         }

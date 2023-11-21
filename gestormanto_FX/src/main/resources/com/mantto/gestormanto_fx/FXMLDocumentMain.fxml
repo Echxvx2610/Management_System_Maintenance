@@ -5,12 +5,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mantto.gestormanto_fx.FXMLDocumentMainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mantto.gestormanto_fx.FXMLDocumentMainController">
    <children>
-      <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Pane fx:id="paneLoader" layoutX="50.0" layoutY="44.0" prefHeight="550.0" prefWidth="850.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="10.0" />
+      <AnchorPane prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <ImageView id="menu" fx:id="menu" fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -19,8 +21,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane1" opacity="0.21" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: black;" />
-      <AnchorPane layoutX="10.0" layoutY="50.0" prefHeight="360.0" prefWidth="40.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="pane1" opacity="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" />
+      <AnchorPane layoutY="110.0" prefHeight="400.0" prefWidth="40.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" layoutY="-10.0" prefHeight="340.0" prefWidth="40.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-5.0">
                <children>
@@ -76,36 +78,36 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane2" layoutX="52.0" layoutY="50.0" prefHeight="360.0" prefWidth="134.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="45.0">
+      <AnchorPane fx:id="pane2" layoutX="50.0" layoutY="110.0" prefHeight="400.0" prefWidth="130.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="50.0">
          <children>
-            <VBox layoutX="17.0" layoutY="14.0" prefHeight="303.0" prefWidth="134.0" spacing="12.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+            <VBox layoutX="17.0" layoutY="14.0" prefHeight="350.0" prefWidth="140.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <Button fx:id="page1" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Dashboard" textOverrun="CLIP" wrapText="true">
+                  <Button fx:id="page1" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Dashboard" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="page2" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Usuarios" textOverrun="CLIP">
+                  <Button fx:id="page2" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Usuarios" textOverrun="CLIP">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="page3" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Equipos" textOverrun="CLIP">
+                  <Button fx:id="page3" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Equipos" textOverrun="CLIP">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="page4" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Generar OT" textOverrun="CLIP">
+                  <Button fx:id="page4" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Generar OT" textOverrun="CLIP">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="page5" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Inventario" textOverrun="CLIP">
+                  <Button fx:id="page5" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Inventario" textOverrun="CLIP">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="page6" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Plan Mantto" textOverrun="CLIP">
+                  <Button fx:id="page6" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Plan Mantto" textOverrun="CLIP">
                      <font>
                         <Font size="18.0" />
                      </font>

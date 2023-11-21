@@ -71,8 +71,8 @@ public class FXMLDocumentLoginController implements Initializable {
 
                     // Configurar el tamaño de la ventana principal
                     if (primaryStage != null) {
-                        primaryStage.setWidth(800); // Establecer el ancho deseado
-                        primaryStage.setHeight(450); // Establecer la altura deseada
+                        primaryStage.setWidth(900); // Establecer el ancho deseado
+                        primaryStage.setHeight(600); // Establecer la altura deseada
                         primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
                     }
 

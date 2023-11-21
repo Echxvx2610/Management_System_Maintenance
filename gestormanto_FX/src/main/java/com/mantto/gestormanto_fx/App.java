@@ -21,12 +21,14 @@ public class App extends Application {
         // cargar el archivo FXML login
         this.primaryStage = primaryStage;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv2.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
