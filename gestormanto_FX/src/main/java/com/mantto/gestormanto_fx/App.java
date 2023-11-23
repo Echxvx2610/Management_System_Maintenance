@@ -22,6 +22,7 @@ public class App extends Application {
         this.primaryStage = primaryStage;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv2.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentEquipos.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

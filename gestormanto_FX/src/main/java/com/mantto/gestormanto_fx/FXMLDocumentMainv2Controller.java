@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,17 +31,27 @@ public class FXMLDocumentMainv2Controller implements Initializable {
     @FXML
     void page1(MouseEvent event) {
         //loaderPage("FXMLPage1");
-        loaderPage("FXMLDocumentLogin");
+        loaderPage("FXMLDocumentEquipos");
     }
 
     @FXML
     void page2(MouseEvent event) {
-        loaderPage("FXMLPage2");
+        loaderPage("FXMLDocumentConsumible");
     }
 
     @FXML
     void page3(MouseEvent event) {
-        loaderPage("FXMLPage3");
+        loaderPage("FXMLDocumentUsuario");
+    }
+
+    @FXML
+    void page4(MouseEvent event) {
+        loaderPage("FXMLDocumentPlanMantto");
+    }
+
+    @FXML
+    void page5(MouseEvent event) {
+        loaderPage("FXMLDocumentOT");
     }
 
     private void loaderPage(String page) {

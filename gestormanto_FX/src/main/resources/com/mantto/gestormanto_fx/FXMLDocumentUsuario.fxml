@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: w; -fx-border-width: 5 5 5 5; -fx-border-color: #4ac7e0;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="390.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" textAlignment="CENTER" wrappingWidth="119.013671875">
+         <font>
+            <Font name="Cambria" size="33.0" />
+         </font>
+      </Text>
+      <FontAwesomeIcon glyphName="USER" layoutX="346.0" layoutY="84.0" size="45">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2980392277240753" green="0.7176470756530762" blue="0.7882353067398071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </FontAwesomeIcon>
+      <ButtonBar buttonMinWidth="60.0" layoutX="339.0" layoutY="210.0" prefHeight="30.0" prefWidth="200.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <buttons>
+            <Button minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Math" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USER_PLUS" size="20" />
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Math" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="20" />
+               </graphic>
+            </Button>
+            <Button minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(#000000, #4cb7c9);" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Math" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USER_TIMES" size="20" />
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </buttons>
+      </ButtonBar>
+      <TableView layoutX="100.0" layoutY="250.0" prefHeight="223.0" prefWidth="720.0" style="-fx-border-image-width: 2 2 2 2; -fx-border-color: #4ac7e0;">
+         <columns>
+            <TableColumn prefWidth="25.0" text="id" />
+            <TableColumn prefWidth="139.0" text="Nombre" />
+            <TableColumn prefWidth="139.0" text="Apellido" />
+            <TableColumn prefWidth="139.0" text="correo" />
+            <TableColumn prefWidth="139.0" text="Usuario" />
+            <TableColumn prefWidth="139.0" text="Contraseña" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="100.0" layoutY="109.0" prefHeight="87.0" prefWidth="720.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.4000244140625" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.0000122070312" minWidth="10.0" prefWidth="272.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.4000244140625" minWidth="10.0" prefWidth="92.800048828125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.79999999999995" minWidth="10.0" prefWidth="275.199951171875" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="3.0" minHeight="3.3999923706054673" prefHeight="7.800024414062499" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="38.19997558593751" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="3.0" minHeight="1.4000000000000057" prefHeight="10.199987792968756" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="32.600012207031256" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField prefHeight="30.0" prefWidth="226.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets bottom="3.0" />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="3.0" top="3.0" />
+               </padding>
+            </TextField>
+            <TextField prefHeight="30.0" prefWidth="263.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="3.0" top="3.0" />
+               </padding>
+            </TextField>
+            <TextField prefHeight="30.0" prefWidth="226.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="3.0" top="3.0" />
+               </padding>
+            </TextField>
+            <TextField prefHeight="30.0" prefWidth="226.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField prefHeight="30.0" prefWidth="226.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField prefHeight="30.0" prefWidth="226.0" style="-fx-background-color: trasparent; -fx-border-color: #4ac7e0; -fx-border-width: 1 1 1 1;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label text="Id" GridPane.rowIndex="1" />
+            <Label text="Apellido" GridPane.rowIndex="5" />
+            <Label text="Nombre" GridPane.rowIndex="3" />
+            <Label text="Correo" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Usuario" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+      <Button layoutX="781.0" layoutY="199.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+         <font>
+            <Font name="Cambria Math" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/icono_PDF.jpeg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="743.0" layoutY="199.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+         <font>
+            <Font name="Cambria Math" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/icono_csv.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
