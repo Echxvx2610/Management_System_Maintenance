@@ -30,7 +30,7 @@ public class clases {
         */
 
         // ejercicio de prueba
-        Equipo montapollas = new Equipo("el perron","RC5500","CROWN","0030","Madreadon","Almacen","Montapollas electrico hombre chupas");
+        Equipo montapollas = new Equipo("el perron","RC5500","CROWN","Madreadon","Almacen","Montapollas electrico hombre chupas");
         Usuario lic = new Usuario("lic","malaface","lic_culiadorblackbeld@hotmail.com","sexmachine69","abc123","abc123");
 
         // crear lista de actividades para plan1
