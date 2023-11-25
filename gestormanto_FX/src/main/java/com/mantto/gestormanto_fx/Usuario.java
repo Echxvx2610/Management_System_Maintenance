@@ -78,8 +78,23 @@ public class Usuario {
         return attributes;
     }
 
-    public String toString(){
-        return name + " " + lastname + " " + email + " " + username + " " + password;
+    public ArrayList<String> toArrayList() {
+        // Retorna un ArrayList con todos los atributos
+        ArrayList<String> atributos = new ArrayList<>();
+        atributos.add(this.getName());
+        atributos.add(this.getLastname());
+        atributos.add(this.getEmail());
+        atributos.add(this.getUsername());
+        atributos.add(this.getPassword());
+        return atributos;
     }
 
+    @Override
+    public String toString() {
+        return "nombre: " + name +
+                "\napellido: " + lastname +
+                "\ncorreo_electronico: " + email +
+                "\nusuario: " + username +
+                "\ncontraseña: " + password;
+    }
 }

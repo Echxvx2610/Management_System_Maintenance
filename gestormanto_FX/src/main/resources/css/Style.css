@@ -9,3 +9,27 @@
     -fx-border-width: 0px 0px 0px 3px;
     -fx-text-fill: WHITE;
 }
+
+.estilo_botones:hover{
+    -fx-background-color: RED;
+    -fx-border-color: BLACK;
+    -fx-border-width: 5px 5px 5px 5px;
+    -fx-text-fill: WHITE;
+}
+
+.estilo_iconos:hover{
+    -fx-background-color: WHITE;
+    -
+}
+
+/* styles.css */
+.button-normal {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.button-hover {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
