@@ -68,7 +68,7 @@ public class FXMLDocumentMainv2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (primaryStage != null) {
-            primaryStage.setWidth(700); // Establecer el ancho deseado
+            primaryStage.setWidth(1000); // Establecer el ancho deseado
             primaryStage.setHeight(500); // Establecer la altura deseada
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
         }

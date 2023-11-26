@@ -25,22 +25,16 @@ import javax.swing.JOptionPane;
 public class FXMLDocumentLoginController implements Initializable {
     @FXML
     private Stage primaryStage;
-
     @FXML
     private Hyperlink hyperHelp;
-
     @FXML
     private Button signButton;
-
     @FXML
     private Button loginButton;
-
     @FXML
     private CheckBox checkPassword;
-
     @FXML
     private PasswordField passwordField;
-
     @FXML
     private TextField userField;
 
@@ -51,6 +45,7 @@ public class FXMLDocumentLoginController implements Initializable {
 
         Connection conn = null;
         try {
+            // Verificar los datos de inicio de sesión
             conn = DatabaseConnector.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña =?");
             stmt.setString(1, username);
@@ -63,7 +58,7 @@ public class FXMLDocumentLoginController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Login successful");
                 try {
                     // Cargar el nuevo archivo FXML
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMain.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv2.fxml"));
                     Parent root = loader.load();
 
                     // Obtener el Stage principal desde la aplicación
@@ -71,14 +66,15 @@ public class FXMLDocumentLoginController implements Initializable {
 
                     // Configurar el tamaño de la ventana principal
                     if (primaryStage != null) {
-                        primaryStage.setWidth(900); // Establecer el ancho deseado
+                        primaryStage.setWidth(1200); // Establecer el ancho deseado
                         primaryStage.setHeight(600); // Establecer la altura deseada
                         primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
                     }
-
                     // Reemplazar el contenido de la ventana actual con el nuevo FXML
                     Scene scene = new Scene(root);
                     primaryStage.setScene(scene);
+                    // Ajustar posicion en pantalla de la ventana principal
+                    primaryStage.centerOnScreen();
                 } catch (IOException e) {
                     // Manejar errores en la carga del nuevo FXML
                     e.printStackTrace();
@@ -86,7 +82,7 @@ public class FXMLDocumentLoginController implements Initializable {
             } else {
                 JOptionPane.showMessageDialog(null, "Login failed");
                 userField.setText("");
-                // limpiar passwordfiel y dejar placeholder
+                // limpiar passwordfield y dejar placeholder
                 passwordField.clear();
                 passwordField.setPromptText("Password");
             }
@@ -151,6 +147,7 @@ public class FXMLDocumentLoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Configurar el tamaño de la ventana principal
         if (primaryStage != null) {
             primaryStage.setWidth(700); // Establecer el ancho deseado
             primaryStage.setHeight(500); // Establecer la altura deseada

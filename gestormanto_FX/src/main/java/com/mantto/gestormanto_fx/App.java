@@ -21,14 +21,13 @@ public class App extends Application {
         // cargar el archivo FXML login
         this.primaryStage = primaryStage;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv2.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentEquipos.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
-            primaryStage.show();
+            // inicializamos como primera ventana el log in
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentLogin.fxml"));
+            Parent root = loader.load(); // creamos una raiz para el archivo FXML
+            Scene scene = new Scene(root); // creamos una escena para el archivo FXML
+            primaryStage.setScene(scene); // establecemos la escena
+            primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+            primaryStage.show(); // mostramos la ventana
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -23,7 +23,7 @@ public class GenerarOrden {
         StringBuilder result = new StringBuilder();
         result.append("Orden:\n")
                 .append("Usuario: ").append(usuario.getName()).append("\n")
-                .append("Equipo: ").append(equipo.getName()).append("\n")
+                .append("Equipo: ").append(equipo.getNombre()).append("\n")
                 .append("Plan: ").append(plan.getNombre()).append("\n")
                 .append("Actividades:\n");
 

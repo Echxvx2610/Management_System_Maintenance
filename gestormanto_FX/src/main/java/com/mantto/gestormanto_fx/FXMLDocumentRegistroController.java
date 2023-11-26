@@ -60,9 +60,9 @@ public class FXMLDocumentRegistroController implements Initializable {
         nameField.clear();
         userField.clear();
         password1.clear();
-        password1.setPromptText("Password");
+        password1.setPromptText("Contraseña");
         password2.clear();
-        password2.setPromptText("Confirm Password");
+        password2.setPromptText("Confirmar Contraseña");
     }
 
     @FXML
@@ -107,8 +107,6 @@ public class FXMLDocumentRegistroController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
                 return; // Salir de la función sin continuar con el registro
             }
-
-            // Resto del código para insertar el nuevo usuario en la base de datos
             Connection conn = null;
             try {
                 conn = DatabaseConnector.getConnection();
