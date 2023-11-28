@@ -10,6 +10,13 @@
     -fx-text-fill: WHITE;
 }
 
+.botones_crud{
+    -fx-background-color:  linear-gradient(#000000, #4cb7c9);
+    -fx-border-style: solid;
+    -fx-text-fill: WHITE;
+    -fx-border-radius: 5px;
+}
+
 .estilo_botones:hover{
     -fx-background-color: RED;
     -fx-border-color: BLACK;
@@ -19,7 +26,6 @@
 
 .estilo_iconos:hover{
     -fx-background-color: WHITE;
-    -
 }
 
 /* styles.css */

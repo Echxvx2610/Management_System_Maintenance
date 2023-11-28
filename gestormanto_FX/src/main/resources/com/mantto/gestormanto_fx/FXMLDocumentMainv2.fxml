@@ -12,28 +12,28 @@
    <left>
       <VBox prefHeight="600.0" prefWidth="133.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#home" prefHeight="171.0" prefWidth="140.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Home">
+            <Button mnemonicParsing="false" onMouseClicked="#home" prefHeight="132.0" prefWidth="133.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Home">
                <graphic>
                   <FontAwesomeIcon glyphName="HOME" size="30" />
                </graphic></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#page1" prefHeight="157.0" prefWidth="142.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Equipos">
+            <Button mnemonicParsing="false" onMouseClicked="#page1" prefHeight="125.0" prefWidth="133.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Equipos">
                <graphic>
                   <FontAwesomeIcon glyphName="WRENCH" size="30" />
                </graphic></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#page2" prefHeight="126.0" prefWidth="138.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Consumibles">
+            <Button mnemonicParsing="false" onMouseClicked="#page2" prefHeight="126.0" prefWidth="138.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Consumibles">
                <graphic>
                   <FontAwesomeIcon glyphName="CUBES" size="30" />
                </graphic></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#page3" prefHeight="212.0" prefWidth="139.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Usuarios">
+            <Button mnemonicParsing="false" onMouseClicked="#page3" prefHeight="115.0" prefWidth="133.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Usuarios">
                <graphic>
-                  <FontAwesomeIcon glyphName="USERS" size="30" />
+                  <FontAwesomeIcon glyphName="USERS" size="30" tabSize="0" />
                </graphic></Button>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#page4" prefHeight="118.0" prefWidth="133.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Plan Mantenimiento" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#page4" prefHeight="118.0" prefWidth="133.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Plan Mantenimiento" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <FontAwesomeIcon glyphName="CALENDAR" size="30" text="" />
                </graphic>
             </Button>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#page5" prefHeight="212.0" prefWidth="141.0" styleClass="estilo_botones" stylesheets="@../../../css/Style.css" text="Generar OT" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#page5" prefHeight="128.0" prefWidth="133.0" styleClass="menuSide" stylesheets="@../../../css/Style.css" text="Generar OT" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <FontAwesomeIcon glyphName="PENCIL_SQUARE" size="35" />
                </graphic>

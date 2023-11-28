@@ -56,7 +56,7 @@
             <TableColumn fx:id="descripcionColumn" prefWidth="199.0" text="Descripcion" />
         </columns>
       </TableView>
-      <GridPane layoutX="100.0" layoutY="82.0" prefHeight="87.0" prefWidth="720.0">
+      <GridPane layoutX="48.0" layoutY="107.0" prefHeight="87.0" prefWidth="720.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.4000244140625" minWidth="10.0" prefWidth="80.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.0000122070312" minWidth="10.0" prefWidth="272.0" />
@@ -120,33 +120,33 @@
             <ChoiceBox fx:id="choiceBox" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="782.0" layoutY="184.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+      <Button layoutX="827.0" layoutY="268.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="8.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/icono_PDF.jpeg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="744.0" layoutY="184.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+      <Button layoutX="828.0" layoutY="313.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="8.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/icono_csv.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="buttonAgregar" layoutX="400.0" layoutY="193.0" mnemonicParsing="false" onAction="#pressAgregar" text="Agregar" />
-      <Button layoutX="469.0" layoutY="193.0" mnemonicParsing="false" text="Editar" />
-      <Button fx:id="buttonEliminar" layoutX="529.0" layoutY="193.0" mnemonicParsing="false" text="Eliminar" />
-      <Button fx:id="buttonActualizar" layoutX="758.0" layoutY="238.0" mnemonicParsing="false" onAction="#pressActualizar" text="Actualizar" />
+      <Button fx:id="buttonAgregar" layoutX="332.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressAgregar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Agregar" />
+      <Button fx:id="buttonEditar" layoutX="401.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressEditar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Editar" />
+      <Button fx:id="buttonEliminar" layoutX="461.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressEliminar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Eliminar" />
+      <Button fx:id="buttonActualizar" layoutX="758.0" layoutY="238.0" mnemonicParsing="false" onAction="#pressActualizar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
    </children>
 </AnchorPane>
