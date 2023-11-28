@@ -8,10 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Pair;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 
 // importaciones metodo initialize
 import java.net.URL;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 // importaciones popups JOptionPane
 import javax.swing.*;
@@ -21,9 +28,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+// importaciones de archivos
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+
 
 public class FXMLDocumentEquiposController implements Initializable {
-    // Elementos de la vista
+    //.......................::::: Elementos de la vista ::::::................................
     @FXML private ChoiceBox<String> choiceBox;
     @FXML private TextField gridNombre;
     @FXML private TextField gridModelo;
@@ -35,6 +55,8 @@ public class FXMLDocumentEquiposController implements Initializable {
     @FXML private Button buttonActualizar;
     @FXML private Button buttonEditar;
     @FXML private Button buttonEliminar;
+    @FXML private Button buttonExportar;
+    @FXML private Button buttonPDF;
     @FXML private Stage primaryStage;
     // ids columnas
     @FXML private TableColumn<Equipo, Integer> idColumn;
@@ -49,13 +71,221 @@ public class FXMLDocumentEquiposController implements Initializable {
     //coleccion de elementos equipos
     private ObservableList<Equipo> listaEquipos = FXCollections.observableArrayList();
 
-    @FXML private void pressEditar(ActionEvent event){
-        // to do
+    // ....................................::::: Metodos/Triggers ::::::.....................................
+
+    /*
+    @FXML
+    private void pressPDF(ActionEvent event) {
+        Stage stage = (Stage) tableView.getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos PDF", "*.pdf"));
+
+        File file = fileChooser.showSaveDialog(stage);
+
+        if (file != null) {
+            try (PDDocument document = new PDDocument()) {
+                PDPage page = new PDPage();
+                document.addPage(page);
+
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+                float margin = 50;
+                float yStart = page.getMediaBox().getHeight() - margin;
+                float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+                float yPosition = yStart;
+                float tableHeight = 20;
+                float rowHeight = 20;
+                float tableMargin = 10;
+
+                // Encabezado
+                contentStream.beginText();
+                //contentStream.setFont(font, 12);
+                contentStream.newLineAtOffset(margin, yStart);
+                contentStream.showText("Datos de la tabla:");
+                contentStream.endText();
+
+                yStart -= 20;
+
+                // Contenido
+                for (Equipo equipo : listaEquipos) {
+                    if (yPosition - tableHeight - tableMargin < 0) {
+                        // Nueva página si es necesario
+                        contentStream.close();
+                        page = new PDPage();
+                        document.addPage(page);
+                        contentStream = new PDPageContentStream(document, page);
+                        yStart = page.getMediaBox().getHeight() - margin;
+                    }
+
+                    // Celda de datos
+                    contentStream.beginText();
+                    //contentStream.setFont(PDType1Font.HELVETICA, 12);
+                    contentStream.newLineAtOffset(margin, yStart -= rowHeight);
+                    contentStream.showText("Nombre: " + equipo.getNombre());
+                    contentStream.newLineAtOffset(0, -rowHeight);
+                    contentStream.showText("Modelo: " + equipo.getModelo());
+                    contentStream.newLineAtOffset(0, -rowHeight);
+                    contentStream.showText("Marca: " + equipo.getMarca());
+                    contentStream.newLineAtOffset(0, -rowHeight);
+                    contentStream.showText("Estado: " + equipo.getEstado_equipo());
+                    contentStream.newLineAtOffset(0, -rowHeight);
+                    contentStream.showText("Localización: " + equipo.getLocalizacion());
+                    contentStream.newLineAtOffset(0, -rowHeight);
+                    contentStream.showText("Descripción: " + equipo.getNota());
+                    contentStream.endText();
+                }
+
+                contentStream.close();
+
+                // Guardar PDF
+                document.save(file);
+                JOptionPane.showMessageDialog(null, "Datos exportados exitosamente a: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al exportar datos a PDF: " + e.getMessage());
+            }
+        }
+    }
+*/
+
+    @FXML
+    private void pressPDF(ActionEvent event) {
+        // Obtener la lista de equipos de tu TableView
+        List<Equipo> listaEquipos = tableView.getItems();
+
+        // Crear un documento PDF
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+
+            // Crear el flujo de contenido para escribir en el PDF
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                // Establecer la posición inicial para el contenido
+                contentStream.newLineAtOffset(20, page.getMediaBox().getHeight() - 20);
+
+                // Escribir los datos de la tabla en el PDF
+                for (Equipo equipo : listaEquipos) {
+                    contentStream.showText(equipo.getNombre() + "\t" + equipo.getModelo() + "\t" + equipo.getMarca());
+                    contentStream.newLineAtOffset(0, -20); // Avanzar a la siguiente línea
+                }
+            }
+
+            // Guardar el PDF en un archivo
+            File file = new File("equipos_reporte.pdf");
+            document.save(file);
+
+            // Abrir el PDF con el visor predeterminado
+            java.awt.Desktop.getDesktop().open(file);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void pressEditar(ActionEvent event) {
+        // Obtener el equipo seleccionado
+        Equipo equipoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+
+        // Verificar si se ha seleccionado un equipo
+        if (equipoSeleccionado == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipo para editar.");
+            return;
+        }
+
+        // Crear un nuevo equipo con los datos actuales (para mostrar en la interfaz de edición)
+        Equipo equipoEdicion = new Equipo(
+                equipoSeleccionado.getNombre(),
+                equipoSeleccionado.getModelo(),
+                equipoSeleccionado.getMarca(),
+                equipoSeleccionado.getEstado_equipo(),
+                equipoSeleccionado.getLocalizacion(),
+                equipoSeleccionado.getNota()
+        );
+
+        // Crear un diálogo de edición
+        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        dialog.setTitle("Editar Equipo");
+        dialog.setHeaderText("Editando equipo con ID: " + equipoSeleccionado.getIdTemporal());
+
+        // Crear campos de texto para la edición
+        TextField textFieldNombre = new TextField(equipoEdicion.getNombre());
+        TextField textFieldModelo = new TextField(equipoEdicion.getModelo());
+        TextField textFieldMarca = new TextField(equipoEdicion.getMarca());
+        TextField textFieldEstado = new TextField(equipoEdicion.getEstado_equipo());
+        TextField textFieldLocalizacion = new TextField(equipoEdicion.getLocalizacion());
+        TextField textFieldNota = new TextField(equipoEdicion.getNota());
+
+        // Añadir campos al diálogo
+        dialog.getDialogPane().setContent(new VBox(8,
+                new Label("Nombre:"), textFieldNombre,
+                new Label("Modelo:"), textFieldModelo,
+                new Label("Marca:"), textFieldMarca,
+                new Label("Estado:"), textFieldEstado,
+                new Label("Localización:"), textFieldLocalizacion,
+                new Label("Nota:"), textFieldNota
+        ));
+
+        // Botones de acción
+        ButtonType buttonTypeGuardar = new ButtonType("Guardar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonTypeGuardar, buttonTypeCancelar);
+
+        // Configurar el resultado del diálogo
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == buttonTypeGuardar) {
+                // Devolver un par de nuevos valores para actualizar el equipo
+                return new Pair<>(textFieldNombre.getText(), textFieldModelo.getText());
+            }
+            return null; // Cancelar en caso de pulsar el botón de Cancelar
+        });
+
+        // Mostrar el diálogo y procesar el resultado
+        Optional<Pair<String, String>> result = dialog.showAndWait();
+
+        result.ifPresent(nuevosValores -> {
+            // Actualizar el equipo con los nuevos valores
+            equipoSeleccionado.setNombre(nuevosValores.getKey());
+            equipoSeleccionado.setModelo(nuevosValores.getValue());
+
+            // Luego, actualiza estos cambios en la base de datos
+            actualizarEquipoEnBD(equipoSeleccionado);
+        });
     }
 
     @FXML private void pressEliminar(ActionEvent event){
-        //  to do
+        // Obtener el equipo seleccionado
+        Equipo equipoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+
+        // Verificar si se ha seleccionado un equipo
+        if (equipoSeleccionado == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipo para editar.");
+            return;
+        }
+        // Confirmar la eliminacion del equipo
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el equipo seleccionado.","Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            // Eliminar el equipo de la base de datos
+            try(Connection conn = DatabaseConnector.getConnection()) {
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM equipos WHERE id = ?");
+                stmt.setInt(1, equipoSeleccionado.getIdTemporal());
+
+                int filasAfectadas = stmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(null, "Equipo eliminado correctamente.");
+                    cargarDatosDesdeBD();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar el equipo. Asegurate de que el equipo exista.");
+                }
+            }catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al eliminar el equipo: " + e.getMessage());
+            }
+        }
     }
+
     @FXML public void pressActualizar(ActionEvent event){
         cargarDatosDesdeBD();
     }
@@ -80,7 +310,7 @@ public class FXMLDocumentEquiposController implements Initializable {
             Connection conn = null;
             try {
                 conn = DatabaseConnector.getConnection();
-                String query = "INSERT INTO equipos (nombre, modelo, marca, disponible, lugar, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO equipos (nombre, modelo, Marca, disponible, lugar, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = conn.prepareStatement(query);
                 stmt.setString(1, equipo.getNombre());
                 stmt.setString(2, equipo.getModelo());
@@ -145,13 +375,13 @@ public class FXMLDocumentEquiposController implements Initializable {
                 // Cargar los datos desde la base de datos
                 cargarDatosDesdeBD();
 
-            }
+    }
 
-            public void setStage (Stage stage){
+    public void setStage (Stage stage){
                 this.primaryStage = stage;
-            }
+    }
 
-            public boolean equipoExists (String name){
+    public boolean equipoExists (String name){
                 // Verificar si el equipo ya existe en la base de datos
                 try (Connection conn = DatabaseConnector.getConnection();
                      PreparedStatement stmt = conn.prepareStatement("SELECT * FROM equipos WHERE nombre = ?")) {
@@ -162,8 +392,9 @@ public class FXMLDocumentEquiposController implements Initializable {
                     e.printStackTrace();
                     return false;
                 }
-            }
-            private void cargarDatosDesdeBD () {
+    }
+    // Metodos para operar base de datos
+    private void cargarDatosDesdeBD () {
                 Connection conn = null;
                 PreparedStatement stmt = null;
                 ResultSet rs = null;
@@ -209,7 +440,83 @@ public class FXMLDocumentEquiposController implements Initializable {
                         e.printStackTrace();
                     }
                 }
+    }
+    private void actualizarEquipoEnBD(Equipo equipo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = DatabaseConnector.getConnection();
+            String query = "UPDATE equipos SET nombre=?, modelo=? WHERE id=?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, equipo.getNombre());
+            stmt.setString(2, equipo.getModelo());
+            stmt.setInt(3, equipo.getIdTemporal());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Equipo actualizado exitosamente");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el equipo: " + e.getMessage());
+        } finally {
+            // Cerrar conexión con la base de datos
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    private void pressExportar(ActionEvent event) {
+        // Obtener la ventana principal (Stage) desde cualquier nodo en la escena
+        Stage stage = (Stage) tableView.getScene().getWindow();
+
+        // Configurar el FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar CSV");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos CSV", "*.csv"));
+
+        // Mostrar el diálogo de guardar
+        File file = fileChooser.showSaveDialog(stage);
+
+        // Verificar si el usuario ha seleccionado un archivo
+        if (file != null) {
+            try {
+                // Crear un FileWriter para escribir en el archivo
+                FileWriter writer = new FileWriter(file);
+
+                // Escribir el encabezado del CSV (nombres de las columnas)
+                for (TableColumn<?, ?> column : tableView.getColumns()) {
+                    writer.write(column.getText() + ",");
+                }
+                writer.write("\n");
+
+                // Escribir los datos de cada fila en el CSV
+                for (Equipo equipo : listaEquipos) {
+                    writer.write(equipo.getNombre() + ",");
+                    writer.write(equipo.getModelo() + ",");
+                    writer.write(equipo.getMarca() + ",");
+                    writer.write(equipo.getEstado_equipo() + ",");
+                    writer.write(equipo.getLocalizacion() + ",");
+                    writer.write(equipo.getNota() + "\n");
+                }
+
+                // Cerrar el FileWriter
+                writer.close();
+
+                // Mostrar mensaje de éxito
+                JOptionPane.showMessageDialog(null, "Datos exportados exitosamente a: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al exportar datos: " + e.getMessage());
+            }
+        }
+    }
+}
 
 

@@ -120,7 +120,7 @@
             <ChoiceBox fx:id="choiceBox" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-border-color: #4ac7e0; -fx-border-width: 0 0 3 0;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="827.0" layoutY="268.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+      <Button fx:id="buttonPDF" layoutX="827.0" layoutY="268.0" minWidth="38.0" mnemonicParsing="false" onAction="#pressPDF" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
@@ -132,7 +132,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="828.0" layoutY="313.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+      <Button fx:id="buttonExportar" layoutX="828.0" layoutY="313.0" minWidth="38.0" mnemonicParsing="false" onAction="#pressExportar" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
