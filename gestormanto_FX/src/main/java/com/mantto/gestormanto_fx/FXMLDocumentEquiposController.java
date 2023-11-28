@@ -75,7 +75,6 @@ public class FXMLDocumentEquiposController implements Initializable {
                 choiceBox.getValue().toString(),
                 gridLocalizacion.getText(),
                 gridDescripcion.getText());
-
         try {
             // Tomar los valores del equipo y mandarlos a la base de datos
             Connection conn = null;

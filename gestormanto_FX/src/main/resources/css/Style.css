@@ -16,6 +16,11 @@
     -fx-text-fill: WHITE;
     -fx-border-radius: 5px;
 }
+.texfields_crud{
+    -fx-background-color: transparent;
+    -fx-border-color:  #4ac7e0;
+    -fx-border-width: 0 0 3 0;
+}
 
 .estilo_botones:hover{
     -fx-background-color: RED;
