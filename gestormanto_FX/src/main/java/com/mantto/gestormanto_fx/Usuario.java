@@ -11,7 +11,13 @@ public class Usuario {
     String password;
     String confirmPassword;
 
-    //contructor
+    private  int idTemporal;
+
+    // constructor vacio
+    public Usuario() {
+    }
+
+    //contructor con parametros
     public Usuario(String name, String lastname, String email, String username, String password, String confirmPassword) {
         this.name = name;
         this.lastname = lastname;
@@ -21,6 +27,12 @@ public class Usuario {
         this.confirmPassword = confirmPassword;
     }
     //getters y setters
+    public int getIdTemporal() {
+        return idTemporal;
+    }
+    public  void setIdTemporal(int idTemporal) {
+        this.idTemporal = idTemporal;
+    }
     public String getName() {
         return name;
     }

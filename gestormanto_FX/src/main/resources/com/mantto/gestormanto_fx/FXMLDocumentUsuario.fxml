@@ -46,11 +46,12 @@
       </FontAwesomeIcon>
       <TableView fx:id="tableView" layoutX="100.0" layoutY="250.0" prefHeight="223.0" prefWidth="720.0" style="-fx-border-image-width: 2 2 2 2; -fx-border-color: #4ac7e0;">
          <columns>
-            <TableColumn prefWidth="105.0" text="Nombre" />
-            <TableColumn prefWidth="102.0" text="Apellido" />
-            <TableColumn prefWidth="211.0" text="Correo" />
-            <TableColumn prefWidth="126.0" text="Usuario" />
-            <TableColumn prefWidth="173.0" text="Contraseña" />
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="nombreColumn" prefWidth="105.0" text="Nombre" />
+            <TableColumn fx:id="apellidoColumn" prefWidth="102.0" text="Apellido" />
+            <TableColumn fx:id="correoColumn" prefWidth="179.0" text="Correo" />
+            <TableColumn fx:id="usuarioColumn" minWidth="0.0" prefWidth="119.0" text="Usuario" />
+            <TableColumn fx:id="contraseñaColumn" prefWidth="137.0" text="Contraseña" />
          </columns>
       </TableView>
       <GridPane layoutX="100.0" layoutY="109.0" prefHeight="87.0" prefWidth="720.0">
@@ -131,7 +132,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="422.0" layoutY="205.0" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Editar" textFill="WHITE">
+      <Button fx:id="buttonEditar" layoutX="422.0" layoutY="205.0" minWidth="60.0" mnemonicParsing="false" onAction="#pressEditar" prefHeight="30.0" prefWidth="60.0" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Editar" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
@@ -144,7 +145,7 @@
             <Font name="Cambria Math" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="492.0" layoutY="205.0" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Eliminar" textFill="WHITE">
+      <Button fx:id="buttonEliminar" layoutX="492.0" layoutY="205.0" minWidth="60.0" mnemonicParsing="false" onAction="#pressEliminar" prefHeight="30.0" prefWidth="75.0" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Eliminar" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
@@ -152,6 +153,6 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="753.0" layoutY="222.0" mnemonicParsing="false" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
+      <Button fx:id="buttonActualizar" layoutX="753.0" layoutY="222.0" mnemonicParsing="false" onAction="#pressActualizar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
    </children>
 </AnchorPane>

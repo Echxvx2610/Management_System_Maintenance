@@ -66,10 +66,42 @@ public class FXMLDocumentEquiposController implements Initializable {
     @FXML private TableColumn<Equipo, String> estadoColumn;
     @FXML private TableColumn<Equipo, String> localizacionColumn;
     @FXML private TableColumn<Equipo, String> descripcionColumn;
-
     @FXML private TableView<Equipo> tableView;
+
     //coleccion de elementos equipos
     private ObservableList<Equipo> listaEquipos = FXCollections.observableArrayList();
+
+    // metodos propios del controlador
+    public void initialize (URL url, ResourceBundle resourceBundle){
+        // Configurar el tamaño de la ventana
+        if (primaryStage != null) {
+            primaryStage.setWidth(700); // Establecer el ancho deseado
+            primaryStage.setHeight(500); // Establecer la altura deseada
+            primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+        }
+        // Configurar opciones para el ChoiceBox
+        ObservableList<String> options = FXCollections.observableArrayList("Activo", "Inactivo");
+        choiceBox.setItems(options);
+        choiceBox.setValue("Activo");
+
+        // Configurar las celdas de la TableView para mostrar los datos de los equipos
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("idTemporal"));
+        nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        modeloColumn.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado_equipo"));
+        localizacionColumn.setCellValueFactory(new PropertyValueFactory<>("localizacion"));
+        descripcionColumn.setCellValueFactory(new PropertyValueFactory<>("nota"));
+
+        // Cargar los datos desde la base de datos
+        cargarDatosDesdeBD();
+
+    }
+
+    public void setStage (Stage stage){
+        this.primaryStage = stage;
+    }
+
 
     // ....................................::::: Metodos/Triggers ::::::.....................................
 
@@ -248,6 +280,11 @@ public class FXMLDocumentEquiposController implements Initializable {
             // Actualizar el equipo con los nuevos valores
             equipoSeleccionado.setNombre(nuevosValores.getKey());
             equipoSeleccionado.setModelo(nuevosValores.getValue());
+            equipoSeleccionado.setNota(textFieldNota.getText());
+            equipoSeleccionado.setLocalizacion(textFieldLocalizacion.getText());
+            equipoSeleccionado.setEstado_equipo(textFieldEstado.getText());
+            equipoSeleccionado.setMarca(textFieldMarca.getText());
+
 
             // Luego, actualiza estos cambios en la base de datos
             actualizarEquipoEnBD(equipoSeleccionado);
@@ -351,35 +388,6 @@ public class FXMLDocumentEquiposController implements Initializable {
         }
     }
 
-    public void initialize (URL url, ResourceBundle resourceBundle){
-                // Configurar el tamaño de la ventana
-                if (primaryStage != null) {
-                    primaryStage.setWidth(700); // Establecer el ancho deseado
-                    primaryStage.setHeight(500); // Establecer la altura deseada
-                    primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
-                }
-                // Configurar opciones para el ChoiceBox
-                ObservableList<String> options = FXCollections.observableArrayList("Activo", "Inactivo");
-                choiceBox.setItems(options);
-                choiceBox.setValue("Activo");
-
-                // Configurar las celdas de la TableView para mostrar los datos de los equipos
-                idColumn.setCellValueFactory(new PropertyValueFactory<>("idTemporal"));
-                nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-                modeloColumn.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-                marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
-                estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado_equipo"));
-                localizacionColumn.setCellValueFactory(new PropertyValueFactory<>("localizacion"));
-                descripcionColumn.setCellValueFactory(new PropertyValueFactory<>("nota"));
-
-                // Cargar los datos desde la base de datos
-                cargarDatosDesdeBD();
-
-    }
-
-    public void setStage (Stage stage){
-                this.primaryStage = stage;
-    }
 
     public boolean equipoExists (String name){
                 // Verificar si el equipo ya existe en la base de datos
@@ -447,11 +455,15 @@ public class FXMLDocumentEquiposController implements Initializable {
 
         try {
             conn = DatabaseConnector.getConnection();
-            String query = "UPDATE equipos SET nombre=?, modelo=? WHERE id=?";
+            String query = "UPDATE equipos SET nombre=?, modelo=?, marca=?, disponible=?, lugar=?, descripcion=? WHERE id=?";
             stmt = conn.prepareStatement(query);
             stmt.setString(1, equipo.getNombre());
             stmt.setString(2, equipo.getModelo());
-            stmt.setInt(3, equipo.getIdTemporal());
+            stmt.setString(3, equipo.getMarca());
+            stmt.setString(4, equipo.getEstado_equipo());
+            stmt.setString(5, equipo.getLocalizacion());
+            stmt.setString(6, equipo.getNota());
+            stmt.setInt(7, equipo.getIdTemporal());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Equipo actualizado exitosamente");
         } catch (SQLException e) {
@@ -470,6 +482,7 @@ public class FXMLDocumentEquiposController implements Initializable {
             }
         }
     }
+
 
     @FXML
     private void pressExportar(ActionEvent event) {

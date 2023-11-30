@@ -22,7 +22,7 @@ public class App extends Application {
         this.primaryStage = primaryStage;
         try {
             // inicializamos como primera ventana el log in
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentEquipos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentLogin.fxml"));
             Parent root = loader.load(); // creamos una raiz para el archivo FXML
             Scene scene = new Scene(root); // creamos una escena para el archivo FXML
             primaryStage.setScene(scene); // establecemos la escena
