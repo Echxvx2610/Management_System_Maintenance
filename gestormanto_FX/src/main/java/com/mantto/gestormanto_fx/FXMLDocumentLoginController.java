@@ -58,7 +58,7 @@ public class FXMLDocumentLoginController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Login successful");
                 try {
                     // Cargar el nuevo archivo FXML
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv2.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv3.fxml"));
                     Parent root = loader.load();
 
                     // Obtener el Stage principal desde la aplicación

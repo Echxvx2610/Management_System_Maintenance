@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="54.0" prefWidth="700.0" styleClass="topPanel" stylesheets="@../../../css/Style.css">
+               <children>
+                  <Text fill="WHITE" layoutX="65.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <FontAwesomeIcon fill="WHITE" glyphName="BAR_CHART" layoutX="21.0" layoutY="37.0" size="30" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="ARROW_CIRCLE_LEFT" layoutX="656.0" layoutY="37.0" size="30" />
+               </children>
+            </Pane>
+            <Pane layoutX="109.0" layoutY="61.0" prefHeight="230.0" prefWidth="253.0" styleClass="charBackground" stylesheets="@../../../css/Style.css">
+               <children>
+                  <PieChart layoutX="1.0" layoutY="35.0" prefHeight="195.0" prefWidth="251.0" />
+                  <Text fill="WHITE" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de Equipos" textAlignment="CENTER" wrappingWidth="252.306640625">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="301.0" prefHeight="184.0" prefWidth="674.0" styleClass="charBackground" stylesheets="@../../../css/Style.css">
+               <children>
+                  <LineChart layoutX="-5.0" layoutY="27.0" prefHeight="160.0" prefWidth="678.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <Text fill="WHITE" layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mantenimientos por semana" textAlignment="CENTER" wrappingWidth="675.306640625">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="368.0" layoutY="61.0" prefHeight="230.0" prefWidth="320.0" styleClass="charBackground" stylesheets="@../../../css/Style.css">
+               <children>
+                  <Text fill="WHITE" layoutX="-2.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horas por OT" textAlignment="CENTER" wrappingWidth="323.306640625">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <BarChart layoutY="25.0" prefHeight="206.0" prefWidth="322.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

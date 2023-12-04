@@ -43,8 +43,8 @@ public class FXMLDocumentUsuarioController implements Initializable {
     @FXML private TableColumn<Usuario, String> usuarioColumn;
 
 
-
     private ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+
     // metodos propios del controlador
     private Stage primaryStage;
 
@@ -101,6 +101,8 @@ public class FXMLDocumentUsuarioController implements Initializable {
                 stmt.setString(5, usuario.getPassword());
                 stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
+                // actualizar la tabla con los datos de la BD
+                cargarDatosDesdeBD();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar el usuario: " + e.getMessage());
             } finally {
@@ -110,10 +112,6 @@ public class FXMLDocumentUsuarioController implements Initializable {
                 gridCorreo.setText("");
                 gridUsuario.setText("");
                 gridContraseña.setText("");
-
-                // cargar los datos de la base de datos
-                cargarDatosDesdeBD();
-
                 // cerrar conexion con la base de datos
                 if (conn != null) {
                     conn.close();
@@ -213,6 +211,7 @@ public class FXMLDocumentUsuarioController implements Initializable {
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.");
+                    // Actualiza la tabla de usuarios
                     cargarDatosDesdeBD();
                 }else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar el usuario.");

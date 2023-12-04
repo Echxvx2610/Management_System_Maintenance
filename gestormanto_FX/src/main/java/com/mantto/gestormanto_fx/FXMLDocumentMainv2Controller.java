@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.image.Image;
 
 public class FXMLDocumentMainv2Controller implements Initializable {
 
@@ -25,7 +26,8 @@ public class FXMLDocumentMainv2Controller implements Initializable {
 
     @FXML
     void home(MouseEvent event) {
-        bp.setCenter(ap);
+        //bp.setCenter(ap);
+        loaderPage("FXMLDocumentDashboard");
     }
 
     @FXML
@@ -72,5 +74,6 @@ public class FXMLDocumentMainv2Controller implements Initializable {
             primaryStage.setHeight(500); // Establecer la altura deseada
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
         }
+
     }
 }

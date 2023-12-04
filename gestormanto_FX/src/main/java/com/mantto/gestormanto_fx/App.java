@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 //import javafx.stage.StageStyle;
 
@@ -27,6 +28,9 @@ public class App extends Application {
             Scene scene = new Scene(root); // creamos una escena para el archivo FXML
             primaryStage.setScene(scene); // establecemos la escena
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
+            // establecemos el icono de la ventana
+            //primaryStage.getIcons().add(new Image("src/main/resources/img/icono_app.png"));
+            primaryStage.setTitle("Gestor de Mantenimiento");
             primaryStage.show(); // mostramos la ventana
 
         } catch (Exception e) {
