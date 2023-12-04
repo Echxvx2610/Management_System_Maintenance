@@ -2,24 +2,31 @@ package com.mantto.gestormanto_fx;
 
 public class Actividad {
     // atributos
-    int id_temporal;
+    private int idTemporal;
     String parte;
-    String tiempo;
+    int tiempo;
     String nota;
 
-    // constuctor
-    public Actividad(int id_temporal,String parte, String tiempo, String nota){
-        this.id_temporal = id_temporal;
+    //constructor vacio
+    public Actividad(){
+        this.parte = "";
+        this.tiempo = 0;
+        this.nota = "";
+    }
+
+
+    // constuctor con parametros
+    public Actividad(String parte, int tiempo, String nota){
         this.parte = parte;
         this.tiempo = tiempo;
         this.nota = nota;
     }
     //getter and setter
-    public int getId(){
-        return id_temporal;
+    public int getIdTemporal(){
+        return idTemporal;
     }
-    public void setId(int id){
-        this.id_temporal = id;
+    public void setIdTemporal(int id){
+        this.idTemporal = id;
     }
     public String getParte(){
         return parte;
@@ -27,10 +34,10 @@ public class Actividad {
     public void setParte(String parte){
         this.parte = parte;
     }
-    public String getTiempo(){
+    public int getTiempo(){
         return tiempo;
     }
-    public void setTiempo(String tiempo){
+    public void setTiempo(int tiempo){
         this.tiempo = tiempo;
     }
     public String getNota(){

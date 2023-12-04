@@ -34,8 +34,8 @@ public class clases {
         Usuario lic = new Usuario("lic","malaface","lic_culiadorblackbeld@hotmail.com","sexmachine69","abc123","abc123");
 
         // crear lista de actividades para plan1
-        actividades.add(new Actividad("Niveles de Aceite","5 min","Revisar los niveles de aceite hidraulico,nivel de frenos"));
-        actividades.add(new Actividad("Nivel de presion","5 min","Revisar que los niveles de presion en neumaticos sean optimos"));
+        actividades.add(new Actividad("Niveles de Aceite",5,"Revisar los niveles de aceite hidraulico,nivel de frenos"));
+        actividades.add(new Actividad("Nivel de presion",5,"Revisar que los niveles de presion en neumaticos sean optimos"));
 
         Plan plan1 = new Plan("0002","RC5500","Diario",actividades,false);
 
