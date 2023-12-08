@@ -37,7 +37,7 @@ public class clases {
         actividades.add(new Actividad("Niveles de Aceite",5,"Revisar los niveles de aceite hidraulico,nivel de frenos"));
         actividades.add(new Actividad("Nivel de presion",5,"Revisar que los niveles de presion en neumaticos sean optimos"));
 
-        Plan plan1 = new Plan("0002","RC5500","Diario",actividades,false);
+        Plan plan1 = new Plan("RC5500","Diario",actividades,false);
 
         /*
        // generar orden de trabajo

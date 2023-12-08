@@ -14,8 +14,7 @@ public class App extends Application {
         launch(args);
     }
 
-    @FXML
-    private Stage primaryStage;
+    @FXML private Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) {
@@ -23,13 +22,13 @@ public class App extends Application {
         this.primaryStage = primaryStage;
         try {
             // inicializamos como primera ventana el log in
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainv3.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocumentMainV3.fxml"));
             Parent root = loader.load(); // creamos una raiz para el archivo FXML
             Scene scene = new Scene(root); // creamos una escena para el archivo FXML
             primaryStage.setScene(scene); // establecemos la escena
             primaryStage.setResizable(false); // Opcional: Para hacerla no redimensionable
             // establecemos el icono de la ventana
-            //primaryStage.getIcons().add(new Image("src/main/resources/img/icono_app.png"));
+            primaryStage.getIcons().add(new Image(("D:\\programmer\\Java\\Sistemas_comp\\Management_System_Maintenance\\gestormanto_FX\\src\\main\\resources\\img\\icono_app.png")));
             primaryStage.setTitle("Gestor de Mantenimiento");
             primaryStage.show(); // mostramos la ventana
 

@@ -105,83 +105,6 @@ public class FXMLDocumentEquiposController implements Initializable {
 
     // ....................................::::: Metodos/Triggers ::::::.....................................
 
-    /*
-    @FXML
-    private void pressPDF(ActionEvent event) {
-        Stage stage = (Stage) tableView.getScene().getWindow();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Guardar PDF");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos PDF", "*.pdf"));
-
-        File file = fileChooser.showSaveDialog(stage);
-
-        if (file != null) {
-            try (PDDocument document = new PDDocument()) {
-                PDPage page = new PDPage();
-                document.addPage(page);
-
-                PDPageContentStream contentStream = new PDPageContentStream(document, page);
-
-                float margin = 50;
-                float yStart = page.getMediaBox().getHeight() - margin;
-                float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
-                float yPosition = yStart;
-                float tableHeight = 20;
-                float rowHeight = 20;
-                float tableMargin = 10;
-
-                // Encabezado
-                contentStream.beginText();
-                //contentStream.setFont(font, 12);
-                contentStream.newLineAtOffset(margin, yStart);
-                contentStream.showText("Datos de la tabla:");
-                contentStream.endText();
-
-                yStart -= 20;
-
-                // Contenido
-                for (Equipo equipo : listaEquipos) {
-                    if (yPosition - tableHeight - tableMargin < 0) {
-                        // Nueva página si es necesario
-                        contentStream.close();
-                        page = new PDPage();
-                        document.addPage(page);
-                        contentStream = new PDPageContentStream(document, page);
-                        yStart = page.getMediaBox().getHeight() - margin;
-                    }
-
-                    // Celda de datos
-                    contentStream.beginText();
-                    //contentStream.setFont(PDType1Font.HELVETICA, 12);
-                    contentStream.newLineAtOffset(margin, yStart -= rowHeight);
-                    contentStream.showText("Nombre: " + equipo.getNombre());
-                    contentStream.newLineAtOffset(0, -rowHeight);
-                    contentStream.showText("Modelo: " + equipo.getModelo());
-                    contentStream.newLineAtOffset(0, -rowHeight);
-                    contentStream.showText("Marca: " + equipo.getMarca());
-                    contentStream.newLineAtOffset(0, -rowHeight);
-                    contentStream.showText("Estado: " + equipo.getEstado_equipo());
-                    contentStream.newLineAtOffset(0, -rowHeight);
-                    contentStream.showText("Localización: " + equipo.getLocalizacion());
-                    contentStream.newLineAtOffset(0, -rowHeight);
-                    contentStream.showText("Descripción: " + equipo.getNota());
-                    contentStream.endText();
-                }
-
-                contentStream.close();
-
-                // Guardar PDF
-                document.save(file);
-                JOptionPane.showMessageDialog(null, "Datos exportados exitosamente a: " + file.getAbsolutePath());
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al exportar datos a PDF: " + e.getMessage());
-            }
-        }
-    }
-*/
-
     @FXML
     private void pressPDF(ActionEvent event) {
         // Obtener la lista de equipos de tu TableView
@@ -215,8 +138,7 @@ public class FXMLDocumentEquiposController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    private void pressEditar(ActionEvent event) {
+    @FXML private void pressEditar(ActionEvent event) {
         // Obtener el equipo seleccionado
         Equipo equipoSeleccionado = tableView.getSelectionModel().getSelectedItem();
 
@@ -388,19 +310,6 @@ public class FXMLDocumentEquiposController implements Initializable {
         }
     }
 
-
-    public boolean equipoExists (String name){
-                // Verificar si el equipo ya existe en la base de datos
-                try (Connection conn = DatabaseConnector.getConnection();
-                     PreparedStatement stmt = conn.prepareStatement("SELECT * FROM equipos WHERE nombre = ?")) {
-                    stmt.setString(1, name);
-                    ResultSet rs = stmt.executeQuery();
-                    return rs.next();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    return false;
-                }
-    }
     // Metodos para operar base de datos
     private void cargarDatosDesdeBD () {
                 Connection conn = null;

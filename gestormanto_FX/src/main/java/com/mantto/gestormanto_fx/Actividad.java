@@ -48,7 +48,7 @@ public class Actividad {
     }
 
     public String toString(){
-        return "\tParte: " + parte + "\n" +
+        return "\tActividad: " + parte + "\n" +
                 "\tTiempo: " + tiempo + "\n" +
                 "\tNota: " + nota + "\n";
     }
