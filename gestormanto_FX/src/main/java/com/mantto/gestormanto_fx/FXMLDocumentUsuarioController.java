@@ -188,6 +188,8 @@ public class FXMLDocumentUsuarioController implements Initializable {
 
             // actualizar el usuario en la base de datos
             actualizarUsuarioEnBD(usuarioSeleccionado);
+            // cargar los datos de la base de datos
+            cargarDatosDesdeBD();
         });
     }
 

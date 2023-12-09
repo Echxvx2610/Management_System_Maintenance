@@ -23,37 +23,18 @@ import java.sql.SQLException;
 
 
 public class FXMLDocumentRegistroController implements Initializable {
-    @FXML
-    private Stage primaryStage;
-    @FXML
-    private TextField emailField;
+    @FXML private Stage primaryStage;
+    @FXML private TextField emailField;
+    @FXML private TextField lastnameField;
+    @FXML private Button limpiarButton;
+    @FXML private TextField nameField;
+    @FXML private TextField userField;
+    @FXML private PasswordField password1;
+    @FXML private PasswordField password2;
+    @FXML private Button registroButton;
+    @FXML private Button loginButton;
 
-    @FXML
-    private TextField lastnameField;
-
-    @FXML
-    private Button limpiarButton;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField userField;
-
-    @FXML
-    private PasswordField password1;
-
-    @FXML
-    private PasswordField password2;
-
-    @FXML
-    private Button registroButton;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    void pressClear(ActionEvent event) {
+    @FXML void pressClear(ActionEvent event) {
         // limpiar todos campos textfield y password field
         emailField.clear();
         lastnameField.clear();

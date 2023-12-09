@@ -153,6 +153,5 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonActualizar" layoutX="753.0" layoutY="222.0" mnemonicParsing="false" onAction="#pressActualizar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
    </children>
 </AnchorPane>

@@ -103,7 +103,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="811.0" layoutY="255.0" minWidth="38.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
+      <Button fx:id="buttonCSV" layoutX="811.0" layoutY="255.0" minWidth="38.0" mnemonicParsing="false" onAction="#pressExportar" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: white; -fx-border-image-width: 0 0 0 0; -fx-border-color: whithe;" textFill="WHITE">
          <font>
             <Font name="Cambria Math" size="12.0" />
          </font>
@@ -140,6 +140,5 @@
             <FontAwesomeIcon fill="WHITE" glyphName="TRASH" size="18" />
          </graphic>
       </Button>
-      <Button fx:id="buttonActualizar" layoutX="741.0" layoutY="206.0" mnemonicParsing="false" onAction="#pressActualizar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
    </children>
 </AnchorPane>

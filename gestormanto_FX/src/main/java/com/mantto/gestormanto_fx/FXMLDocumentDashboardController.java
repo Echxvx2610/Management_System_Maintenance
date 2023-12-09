@@ -36,9 +36,9 @@ public class FXMLDocumentDashboardController implements Initializable {
 
         // Crear las series de datos para barChart
         XYChart.Series series = new XYChart.Series();
-        series.getData().add(new XYChart.Data("Categoría 1", 10));
-        series.getData().add(new XYChart.Data("Categoría 2", 20));
-        series.getData().add(new XYChart.Data("Categoría 3", 30));
+        series.getData().add(new XYChart.Data("Orden 1002", 11));
+        series.getData().add(new XYChart.Data("Orden 1008", 8));
+        series.getData().add(new XYChart.Data("Orden 1005", 16));
 
         // Configurar el eje X sin ordenación automática
         CategoryAxis xAxis = new CategoryAxis();

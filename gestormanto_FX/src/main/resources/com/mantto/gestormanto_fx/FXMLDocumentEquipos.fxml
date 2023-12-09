@@ -147,6 +147,5 @@
       <Button fx:id="buttonAgregar" layoutX="332.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressAgregar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Agregar" />
       <Button fx:id="buttonEditar" layoutX="401.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressEditar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Editar" />
       <Button fx:id="buttonEliminar" layoutX="461.0" layoutY="213.0" mnemonicParsing="false" onAction="#pressEliminar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Eliminar" />
-      <Button fx:id="buttonActualizar" layoutX="758.0" layoutY="237.0" mnemonicParsing="false" onAction="#pressActualizar" styleClass="botones_crud" stylesheets="@../../../css/Style.css" text="Actualizar" />
    </children>
 </AnchorPane>

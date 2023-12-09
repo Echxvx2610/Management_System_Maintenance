@@ -8,10 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -148,6 +152,9 @@ public class FXMLDocumentConsumibleController implements Initializable {
 
             // Actualizar el consumible en la base de datos
             actualizarConsumibleEnBD(consumibleSeleccionado);
+            // cargar los datos de la base de datos
+            cargarDatosDesdeBD();
+
         });
     }
 
@@ -182,6 +189,8 @@ public class FXMLDocumentConsumibleController implements Initializable {
                 stmt.setString(6, consumible.getObservaciones());
                 stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Consumible registrado exitosamente");
+                // cargar los datos de la base de datos
+                cargarDatosDesdeBD();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrió un error al registrar el consumible: " + e.getMessage());
             } finally {
@@ -195,9 +204,6 @@ public class FXMLDocumentConsumibleController implements Initializable {
                 gridUnidad.setText("");
                 gridPrecio.setText("");
                 gridObservaciones.setText("");
-                // cargar los datos de la base de datos
-                cargarDatosDesdeBD();
-
                 // cerrar conexión con la base de datos
                 if (conn != null) {
                     try {
@@ -237,6 +243,7 @@ public class FXMLDocumentConsumibleController implements Initializable {
 
                 if (filasAfectadas > 0) {
                     JOptionPane.showMessageDialog(null, "Consumible eliminado exitosamente");
+                    // Cargar los datos de la base de datos
                     cargarDatosDesdeBD();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar el consumible, Asegúrese de que el consumible exista");
@@ -317,6 +324,52 @@ private void cargarDatosDesdeBD() {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el consumible: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    @FXML private void pressExportar(ActionEvent event) {
+        // Obtener la ventana principal (Stage) desde cualquier nodo en la escena
+        Stage stage = (Stage) tableView.getScene().getWindow();
+
+        // Configurar el FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar CSV");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos CSV", "*.csv"));
+
+        // Mostrar el diálogo de guardar
+        File file = fileChooser.showSaveDialog(stage);
+
+        // Verificar si el usuario ha seleccionado un archivo
+        if (file != null) {
+            try {
+                // Crear un FileWriter para escribir en el archivo
+                FileWriter writer = new FileWriter(file);
+
+                // Escribir el encabezado del CSV (nombres de las columnas)
+                for (TableColumn<?, ?> column : tableView.getColumns()) {
+                    writer.write(column.getText() + ",");
+                }
+                writer.write("\n");
+
+                // Escribir los datos de cada fila en el CSV
+                for (Consumible consumible : listaConsumibles) {
+                    writer.write(consumible.getNombre() + ",");
+                    writer.write(consumible.getProveedor() + ",");
+                    writer.write(String.valueOf(consumible.getCantidad()) + ",");
+                    writer.write(consumible.getUnidad() + ",");
+                    writer.write(String.valueOf(consumible.getPrecio()) + ",");
+                    writer.write(consumible.getObservaciones() + "\n");
+                }
+
+                // Cerrar el FileWriter
+                writer.close();
+
+                // Mostrar mensaje de éxito
+                JOptionPane.showMessageDialog(null, "Datos exportados exitosamente a: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al exportar datos: " + e.getMessage());
+            }
         }
     }
 

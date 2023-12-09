@@ -23,23 +23,15 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class FXMLDocumentLoginController implements Initializable {
-    @FXML
-    private Stage primaryStage;
-    @FXML
-    private Hyperlink hyperHelp;
-    @FXML
-    private Button signButton;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private CheckBox checkPassword;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField userField;
+    @FXML private Stage primaryStage;
+    @FXML private Hyperlink hyperHelp;
+    @FXML private Button signButton;
+    @FXML private Button loginButton;
+    @FXML private CheckBox checkPassword;
+    @FXML private PasswordField passwordField;
+    @FXML private TextField userField;
 
-    @FXML
-    void pressLogin(ActionEvent event) {
+    @FXML void pressLogin(ActionEvent event) {
         String username = userField.getText();
         String password = passwordField.getText();
 
