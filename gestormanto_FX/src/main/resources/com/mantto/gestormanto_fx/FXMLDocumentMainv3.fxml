@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,12 +14,15 @@
 
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mantto.gestormanto_fx.FXMLDocumentMainv2Controller">
    <center>
-      <AnchorPane fx:id="ap" onMouseClicked="#page4" prefHeight="600.0" prefWidth="922.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="ap" onMouseClicked="#page4" prefHeight="600.0" prefWidth="922.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="520.0" fitWidth="738.0" layoutX="100.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="302.0" fitWidth="404.0" layoutX="276.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/logo_oficial.jpeg" />
                </image>
+               <effect>
+                  <Reflection />
+               </effect>
             </ImageView>
          </children>
       </AnchorPane>

@@ -41,6 +41,11 @@ public class Plan {
         //this.fechaProximaMantenimiento = calcularFechaProximaMantenimiento();
     }
 
+    public Plan(int id, String nombre) {
+        this.idTemporalPlan = id;
+        this.nombre = nombre;
+    }
+
     //getter and setter
     public int getActividadId() {
         return actividadId;

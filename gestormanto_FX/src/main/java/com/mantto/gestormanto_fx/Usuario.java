@@ -26,6 +26,13 @@ public class Usuario {
         this.password = password;
         this.confirmPassword = confirmPassword;
     }
+
+    public Usuario(int id, String nombre, String apellido) {
+        this.idTemporal = id;
+        this.name = nombre;
+        this.lastname = apellido;
+    }
+
     //getters y setters
     public int getIdTemporal() {
         return idTemporal;

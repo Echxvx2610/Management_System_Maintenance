@@ -139,6 +139,8 @@ public class FXMLDocumentPlanController implements Initializable {
                 pstmt.setString(3, act.getNota());
                 pstmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Actividad agregada");
+                // cargar los datos desde la base de datos
+                cargarActividadesDesdeBD();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al agregar la actividad");
                 e.printStackTrace();
@@ -307,6 +309,8 @@ public class FXMLDocumentPlanController implements Initializable {
             pstmt.setInt(6, actividadSeleccionada.getIdTemporal()); // Agrega el id de la actividad asociada al plan
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Plan agregado exitosamente.");
+            // cargar los datos desde la base de datos
+            cargarPlanes();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el plan.");
             e.printStackTrace();
@@ -421,6 +425,8 @@ public class FXMLDocumentPlanController implements Initializable {
 
             // Luego, actualiza estos cambios en la base de datos
             actualizarActividadEnBD(actividadSeleccionada);
+            // cargar los datos desde la base de datos
+            cargarActividadesDesdeBD();
         });
     }
 
@@ -467,8 +473,100 @@ public class FXMLDocumentPlanController implements Initializable {
         }
     }
 
-    @FXML void pressEditarPlan(){
-        // to do
+    @FXML
+    void pressEditarPlan(ActionEvent event) {
+        Plan planSeleccionado = tableViewPlan.getSelectionModel().getSelectedItem();
+
+        if (planSeleccionado == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un plan para editar.");
+            return;
+        }
+
+        // Crear una nueva instancia de Plan con los datos actuales para mostrar en la interfaz de edición
+        // Crear una nueva instancia de Plan con los datos actuales para mostrar en la interfaz de edición
+        Plan planEdicion = new Plan(
+                planSeleccionado.getNombre(),
+                planSeleccionado.getFrecuencia(),
+                planSeleccionado.getActividades(),
+                planSeleccionado.isRealizado()
+        );
+
+
+        // Crear un diálogo de edición
+        Dialog<Plan> dialog = new Dialog<>();
+        dialog.setTitle("Editar Plan");
+        dialog.setHeaderText("Editando plan con ID: " + planSeleccionado.getIdTemporalPlan());
+
+        // Crear campos de texto para la edición
+        TextField textFieldNombre = new TextField(planEdicion.getNombre());
+        TextField textFieldFrecuencia = new TextField(planEdicion.getFrecuencia());
+        CheckBox checkBoxRealizado = new CheckBox();
+        checkBoxRealizado.setSelected(planEdicion.isRealizado());
+
+        // Agregar campos al diálogo
+        dialog.getDialogPane().setContent(new VBox(8,
+                new Label("Nombre:"), textFieldNombre,
+                new Label("Frecuencia:"), textFieldFrecuencia,
+                new Label("Realizado:"), checkBoxRealizado
+        ));
+
+        // Botones de acción
+        ButtonType buttonTypeGuardar = new ButtonType("Guardar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonTypeGuardar, buttonTypeCancelar);
+
+        // Configurar el resultado del diálogo
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == buttonTypeGuardar) {
+                // Devolver un nuevo objeto Plan con los nuevos valores
+                return new Plan(
+                        textFieldNombre.getText(),
+                        textFieldFrecuencia.getText(),
+                        planEdicion.getActividades(),
+                        checkBoxRealizado.isSelected()
+                );
+            }
+            return null; // Cancelar en caso de pulsar el botón de Cancelar
+        });
+
+        // Mostrar el diálogo y procesar el resultado
+        Optional<Plan> result = dialog.showAndWait();
+
+        result.ifPresent(nuevoPlan -> {
+            // Actualizar el plan con los nuevos valores
+            planSeleccionado.setNombre(nuevoPlan.getNombre());
+            planSeleccionado.setFrecuencia(nuevoPlan.getFrecuencia());
+            planSeleccionado.setRealizado(nuevoPlan.isRealizado());
+
+            // Luego, actualiza estos cambios en la base de datos
+            actualizarPlanEnBD(planSeleccionado);
+            // cargar los datos desde la base de datos
+            cargarActividadesDesdeBD();
+        });
+    }
+
+    public void actualizarPlanEnBD(Plan plan) {
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "UPDATE planmantto SET nombre = ?, frecuencia = ?, realizado = ? WHERE id = ?")) {
+
+            stmt.setString(1, plan.getNombre());
+            stmt.setString(2, plan.getFrecuencia());
+            stmt.setBoolean(3, plan.isRealizado());
+            stmt.setInt(4, plan.getIdTemporalPlan());
+
+            int filasAfectadas = stmt.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(null, "Plan actualizado correctamente en la base de datos.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar el plan en la base de datos.");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el plan en la base de datos.");
+            e.printStackTrace();
+        }
     }
     @FXML void pressEliminarAct(ActionEvent event) {
         // Obtener id de la actividad seleccionada
@@ -491,6 +589,8 @@ public class FXMLDocumentPlanController implements Initializable {
 
                 if (filasAfectadas > 0) {
                     JOptionPane.showMessageDialog(null, "Actividad eliminada exitosamente.");
+                    // cargar los datos desde la base de datos
+                    cargarActividadesDesdeBD();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontró la actividad en la base de datos.");
                 }
@@ -521,6 +621,8 @@ public class FXMLDocumentPlanController implements Initializable {
 
                 if (filasAfectadas > 0) {
                     JOptionPane.showMessageDialog(null, "Plan eliminado exitosamente.");
+                    // cargar los datos desde la base de datos
+                    cargarPlanes();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontró el Plan en la base de datos.");
                 }

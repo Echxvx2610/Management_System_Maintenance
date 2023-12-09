@@ -72,6 +72,10 @@ public class FXMLDocumentEquiposController implements Initializable {
     private ObservableList<Equipo> listaEquipos = FXCollections.observableArrayList();
 
     // metodos propios del controlador
+    public void setStage (Stage stage){
+        this.primaryStage = stage;
+    }
+
     public void initialize (URL url, ResourceBundle resourceBundle){
         // Configurar el tamaño de la ventana
         if (primaryStage != null) {
@@ -98,15 +102,10 @@ public class FXMLDocumentEquiposController implements Initializable {
 
     }
 
-    public void setStage (Stage stage){
-        this.primaryStage = stage;
-    }
-
 
     // ....................................::::: Metodos/Triggers ::::::.....................................
 
-    @FXML
-    private void pressPDF(ActionEvent event) {
+    @FXML private void pressPDF(ActionEvent event) {
         // Obtener la lista de equipos de tu TableView
         List<Equipo> listaEquipos = tableView.getItems();
 
@@ -210,6 +209,8 @@ public class FXMLDocumentEquiposController implements Initializable {
 
             // Luego, actualiza estos cambios en la base de datos
             actualizarEquipoEnBD(equipoSeleccionado);
+            // Cargar los datos desde la base de datos
+            cargarDatosDesdeBD();
         });
     }
 
@@ -234,6 +235,8 @@ public class FXMLDocumentEquiposController implements Initializable {
 
                 if (filasAfectadas > 0) {
                     JOptionPane.showMessageDialog(null, "Equipo eliminado correctamente.");
+                    // Cargar los datos desde la base de datos
+                    cargarDatosDesdeBD();
                     cargarDatosDesdeBD();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar el equipo. Asegurate de que el equipo exista.");
@@ -248,8 +251,7 @@ public class FXMLDocumentEquiposController implements Initializable {
     @FXML public void pressActualizar(ActionEvent event){
         cargarDatosDesdeBD();
     }
-    @FXML
-    private void pressAgregar(ActionEvent event) {
+    @FXML private void pressAgregar(ActionEvent event) {
         // Validar que los campos no estén vacíos
         if (gridNombre.getText().isEmpty() || gridModelo.getText().isEmpty() || gridMarca.getText().isEmpty() || gridLocalizacion.getText().isEmpty() || gridDescripcion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
@@ -279,6 +281,8 @@ public class FXMLDocumentEquiposController implements Initializable {
                 stmt.setString(6, equipo.getNota());
                 stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Equipo registrado exitosamente");
+                // Cargar los datos desde la base de datos
+                cargarDatosDesdeBD();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrió un error al registrar el equipo: " + e.getMessage());
             } finally {
@@ -392,9 +396,7 @@ public class FXMLDocumentEquiposController implements Initializable {
         }
     }
 
-
-    @FXML
-    private void pressExportar(ActionEvent event) {
+    @FXML private void pressExportar(ActionEvent event) {
         // Obtener la ventana principal (Stage) desde cualquier nodo en la escena
         Stage stage = (Stage) tableView.getScene().getWindow();
 

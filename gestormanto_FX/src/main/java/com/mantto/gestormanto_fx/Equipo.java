@@ -32,6 +32,12 @@ public class Equipo {
         this.nota = nota;
     }
 
+    public Equipo(int id, String nombre, String modelo) {
+        this.idTemporal = id;
+        this.nombre = nombre;
+        this.modelo = modelo;
+    }
+
     public String getNombre() {
         return nombre;
     }
