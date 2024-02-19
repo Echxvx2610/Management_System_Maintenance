@@ -37,3 +37,7 @@ https://github.com/Echxvx2610/Management_System_Maintenance/assets/99057175/9ecf
 
 https://github.com/Echxvx2610/Management_System_Maintenance/assets/99057175/bf748abb-9b3e-4439-a341-c49d839ec6e4
 
+# Pendientes
+[] generacion de pdf
+[] dashboard de analisis
+[] generacion de aplicacion
