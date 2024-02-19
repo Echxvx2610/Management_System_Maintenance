@@ -19,6 +19,8 @@ La gestión del mantenimiento es el proceso de seguimiento de los activos de la 
 # Tecnologias utilizadas
 - Java SDK 21.0.1
 - JavaFX 21.0.1
+  - fontawesome v.x.x
+  - mysql connector v.x.x
 - Scene Builder
 - IDEA Intellij IDLE
 - MySQL Workbench
